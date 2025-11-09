@@ -1,0 +1,279 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Тест: Насколько ты защищен от мошенников?{% endblock %}
+
+{% block content %}
+<div class="page-content">
+   <h1> Тест: Насколько вы защищенены от мошенников?</h1>
+    <p class="test-description">Инструкция: Внимательно прочитайте каждый вопрос и выберите один наиболее подходящий ответ.</p>
+
+    <form method="post" class="test-form">
+        {% csrf_token %}
+
+        <div class="question-block">
+            <h3>1. Вы получили электронное письмо, в котором говорится, что вы выиграли в лотерею, в которой вы никогда не участвовали. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q1" value="a" required>
+                    <span>а) Проигнорирую письмо и удалю его.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q1" value="б">
+                    <span>б) Перейду по ссылке в письме, чтобы забрать свой приз.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q1" value="в">
+                    <span>в) Отвечу на письмо и уточню детали выигрыша.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q1" value="г">
+                    <span>г) Позвоню по номеру телефона, указанному в письме.</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>2. Вам позвонил человек, представившийся сотрудником банка. Он говорит, что с вашей карты пытаются снять деньги. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q2" value="а" required>
+                    <span>а) Сообщу ему номер своей карты и CVC-код, чтобы он мог заблокировать транзакцию.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q2" value="б">
+                    <span>б) Переведу деньги на "безопасный" счет, который он мне назовет.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q2" value="в">
+                    <span>в) Поверю ему на слово и буду следовать его инструкциям.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q2" value="г">
+                    <span>г) Скажу, что перезвоню в банк сам(а), и завершу разговор.</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>3. Вы увидели в интернете объявление о продаже очень дорогого телефона по подозрительно низкой цене. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q3" value="а" required>
+                    <span>а) Немедленно куплю его, чтобы не упустить выгодную сделку.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q3" value="б">
+                    <span>б) Свяжусь с продавцом и попрошу его отправить товар наложенным платежом.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q3" value="в">
+                    <span>в) Проигнорирую объявление и поищу другое предложение.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q3" value="г">
+                    <span>г) Попрошу у продавца реквизиты карты и перечислю ему деньги.</span>
+                </label>
+            </div>
+        </div>
+        <div class="question-block">
+            <h3>4. Вы познакомились в интернете с интересным человеком.
+                После нескольких недель общения он(а) просит у тебя денег на операцию для больного родственника. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q4" value="а" required>
+                    <span>а) Сразу же отправлю ему(ей) деньги, ведь он(а) мне доверяет.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q4" value="б">
+                    <span>б) Займу денег у друзей и отправлю их ему(ей).</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q4" value="в">
+                    <span>в) Попробую проверить информацию и посоветуюсь с друзьями или родственниками, прежде чем принимать решение.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q4" value="г">
+                    <span>г) Скажу, что у меня нет денег, но посоветую ему(ей) обратиться в благотворительные фонды.</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>5. Вы получили сообщение с просьбой перейти по ссылке и подтвердить данные своей учетной записи в социальной сети. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q5" value="а" required>
+                    <span>а) Немедленно перейду по ссылке и введу свои данные.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q5" value="б">
+                    <span>б) Проигнорирую сообщение и зайду на сайт социальной сети напрямую, чтобы проверить свои настройки.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q5" value="в">
+                    <span>в) Скопирую ссылку и отправлю ее другу, чтобы он(а) проверил(а) ее.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q5" value="г">
+                    <span>г) Позвоню в службу поддержки социальной сети и спрошу, нужно ли мне подтверждать свои данные.</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>6. Вам предлагают инвестировать деньги в новый "супер-прибыльный" проект, который гарантирует высокую доходность без риска. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q6" value="а" required>
+                    <span>а) Сразу же вложу все свои сбережения, чтобы быстро разбогатеть.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q6" value="б">
+                    <span>б) Вложу небольшую сумму, чтобы проверить, насколько это выгодно.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q6" value="в">
+                    <span>в) Проведу тщательное исследование компании и проекта, прежде чем принимать решение.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q6" value="г">
+                    <span>г) Откажусь от инвестиций, так как считаю, что это слишком рискованно.</span>
+                </label>
+            </div>
+        </div>
+<div class="question-block">
+            <h3>7. Вам позвонили и сказали, что на вашем компьютере обнаружены вирусы, и предлагают помощь в их удалении за определенную плату. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q7" value="а" required>
+                    <span>а) Повешу трубку и самостоятельно проверю свой компьютер антивирусом.</span>
+
+</label>
+                <label class="option">
+                    <input type="radio" name="q7" value="б">
+                    <span>б) Заплачу им деньги, чтобы они удалили все вирусы.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q7" value="в">
+                    <span>в) Сразу же соглашусь и дам им удаленный доступ к своему компьютеру.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q7" value="г">
+                    <span>г) Перезвоню в компанию, от имени которой они представились, чтобы уточнить, действительно ли они звонили.</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>8. Вы получили письмо с просьбой оплатить налог на выигрыш в лотерею, которую вы никогда не покупали. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q8" value="а" required>
+                    <span>а) Оплачу налог, чтобы получить свой выигрыш.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q8" value="б">
+                    <span>б) Проигнорирую письмо, так как знаю, что это мошенничество.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q8" value="в">
+                    <span>в) Свяжусь с организаторами лотереи и уточню детали.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q8" value="г">
+                    <span>г) Попрошу друга, чтобы он помог мне разобраться с этим вопросом.</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>9. Вы увидели объявление о сдаче квартиры в аренду по очень низкой цене. Что ты сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q9" value="а" required>
+                    <span>а) Сразу же переведу залог, чтобы забронировать квартиру.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q9" value="б">
+                    <span>б) Поговорю с арендодателем по телефону и попрошу его отправить мне фотографии квартиры.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q9" value="в">
+                    <span>в) Встречусь с арендодателем лично, осмотрю квартиру и проверю документы, прежде чем принимать какие-либо решения.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q9" value="г">
+                    <span>г) Попрошу друга, чтобы он съездил и посмотрел квартиру вместо меня.</span>
+                </label>
+            </div>
+        </div>
+        <div class="question-block">
+            <h3>10. Вам позвонили и предложили помощь в возврате денег, потерянных в результате мошенничества. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q10" value="а" required>
+                    <span>а) Оплачу их услуги, чтобы вернуть свои деньги.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q10" value="б">
+                    <span>б) Предоставлю им все необходимые документы, чтобы они могли начать работу.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q10" value="в">
+                    <span>в) Проигнорирую звонок, так как считаю, что это бесполезно.</span>
+                </label>
+                <label class="option">
+
+<input type="radio" name="q10" value="г">
+                    <span>г) Пойду в полицию и сообщу о произошедшем мошенничестве.</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>11. Вам позвонил человек, который представился сотрудником пенсионного фонда. Он говорит, что вам положена большая прибавка к пенсии, но нужно назвать ему номер своей банковской карты. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q11" value="а" required>
+                    <span>а) Позвоню в настоящий пенсионный фонд и узнаю, положена ли мне прибавка.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q11" value="б">
+                    <span>б) Поверю ему на слово и буду следовать его инструкциям.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q11" value="в">
+                    <span>в) Сообщу ему все данные своей карты, чтобы он оформил прибавку.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q11" value="г">
+                    <span>г) Попрошу его приехать ко мне домой, чтобы все оформить на месте.</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>12. В интернете вы увидели очень красивое пальто по очень низкой цене. Вас просят заплатить сейчас, чтобы его забронировать. Что вы сделаете?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q12" value="а" required>
+                    <span>а) Быстро заплачу, чтобы не упустить выгодную покупку!</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q12" value="б">
+                    <span>б) Попрошу кого-то из знакомых приехать и посмотреть на это пальто.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q12" value="в">
+                    <span>в) Не буду платить, пока не увижу пальто своими глазами и не померяю.</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q12" value="г">
+                    <span>г) Расскажу об этом всем своим друзьям.</span>
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="test-submit-btn">Завершить тест</button>
+    </form>
+</div>
+{% endblock %}
