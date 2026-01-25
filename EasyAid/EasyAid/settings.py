@@ -28,7 +28,32 @@ DEBUG = True  # Измени на False для продакшена!
 
 ALLOWED_HOSTS = ['*']  # Разреши все хосты или укажи конкретный домен
 
+DATABASE_URL = os.getenv('DATABASE_URL')
 
+if DATABASE_URL:
+    # Используем PostgreSQL на Railway
+    db_info = urlparse(DATABASE_URL)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': db_info.path[1:],
+            'USER': db_info.username,
+            'PASSWORD': db_info.password,
+            'HOST': db_info.hostname,
+            'PORT': db_info.port,
+            'OPTIONS': {
+                'sslmode': 'require',
+            }
+        }
+    }
+else:
+    # Локальная разработка с SQLite
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 # Application definition
 
 INSTALLED_APPS = [
@@ -80,6 +105,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
     }
 }
 
