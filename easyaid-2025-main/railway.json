@@ -5,9 +5,7 @@
     "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput"
   },
   "deploy": {
-    "numReplicas": 1,
     "startCommand": "python manage.py migrate && gunicorn EasyAid.EasyAid.wsgi",
-    "healthcheckPath": "/",
-    "healthcheckTimeout": 300
+    "healthcheckPath": "/"
   }
 }
