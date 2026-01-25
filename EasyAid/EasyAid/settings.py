@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'EasyAid.urls'
+ROOT_URLCONF = 'EasyAid.EasyAid.urls'
 
 TEMPLATES = [
     {
