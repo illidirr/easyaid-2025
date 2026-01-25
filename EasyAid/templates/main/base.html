@@ -49,7 +49,7 @@ nav {
 }
 
 /* ОСНОВНЫЕ СТИЛИ КНОПОК С ЭФФЕКТОМ БЛЕСКА */
-.btn, .main-btn, .test-promo-btn, .test-submit-btn {
+.btn, .main-btn, .test-promo-btn, .test-submit-btn, .auth-btn {
     padding: 0.8rem 2rem;
     background-color: rgb(164, 203, 211);
     color: white;
@@ -67,10 +67,11 @@ nav {
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
+    white-space: nowrap; /* Чтобы текст не переносился */
 }
 
 /* Эффект блеска для всех кнопок */
-.btn::after, .main-btn::after, .test-promo-btn::after, .test-submit-btn::after {
+.btn::after, .main-btn::after, .test-promo-btn::after, .test-submit-btn::after, .auth-btn::after {
     content: '';
     position: absolute;
     top: -50%;
@@ -87,7 +88,7 @@ nav {
     transition: all 0.5s ease;
 }
 
-.btn:hover::after, .main-btn:hover::after, .test-promo-btn:hover::after, .test-submit-btn:hover::after {
+.btn:hover::after, .main-btn:hover::after, .test-promo-btn:hover::after, .test-submit-btn:hover::after, .auth-btn:hover::after {
     left: 100%;
 }
 
@@ -200,6 +201,10 @@ main {
     color: white;
     text-decoration: none;
     letter-spacing: 0.8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Разрешаем перенос текста */
+    word-break: break-word; /* Перенос длинных слов */
 }
 
 .main-btn:hover {
@@ -646,6 +651,151 @@ footer {
     border-left: 4px solid rgb(169, 211, 197);
 }
 
+/* === СТИЛИ ДЛЯ ФОРМ АВТОРИЗАЦИИ === */
+
+/* Контейнер для формы */
+.auth-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border: 2px solid rgb(206, 229, 214);
+}
+
+/* Группа полей ввода */
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: bold;
+    color: rgb(54, 107, 43);
+    font-size: 1.6rem;
+    font-family: 'Lorenzo Sans Bold';
+}
+
+/* Стили для полей ввода */
+.form-group input {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    border: 2px solid rgb(169, 211, 197);
+    border-radius: 15px;
+    font-size: 1.6rem;
+    font-family: 'Lorenzo Sans Bold';
+    transition: all 0.3s ease;
+    background-color: rgba(206, 229, 214, 0.1);
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* Плейсхолдер для полей ввода */
+.form-group input::placeholder {
+    color: rgb(128, 128, 128);
+    opacity: 0.7;
+    font-size: 1.4rem;
+}
+
+/* Фокус на поле ввода */
+.form-group input:focus {
+    border-color: rgb(48, 123, 142);
+    box-shadow: 0 0 0 3px rgba(48, 123, 142, 0.2);
+    outline: none;
+    background-color: white;
+}
+
+/* Стили для кнопок авторизации */
+.auth-btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    background-color: rgb(48, 123, 142);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Lorenzo Sans Bold';
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект блеска для кнопки авторизации */
+.auth-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255,255,255,0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.auth-btn:hover::after {
+    left: 100%;
+}
+
+.auth-btn:hover {
+    background-color: rgb(16, 58, 87);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Ссылки под формой */
+.auth-link {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #666;
+    margin-top: 1.5rem;
+    font-family: 'Lorenzo Sans Bold';
+}
+
+.auth-link a {
+    color: rgb(48, 123, 142);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+    color: rgb(54, 107, 43);
+    text-decoration: underline;
+}
+
+/* Сообщения об ошибках */
+.error {
+    color: #e53e3e;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+    font-family: 'Lorenzo Sans Bold';
+}
+
+/* Сообщения об успехе */
+.success {
+    color: rgb(54, 107, 43);
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(206, 229, 214, 0.3);
+    border-radius: 10px;
+    border-left: 4px solid rgb(54, 107, 43);
+    text-align: center;
+    font-family: 'Lorenzo Sans Bold';
+}
+
 /* === АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ (ВЕРТИКАЛЬНО) === */
 
 @media (max-width: 768px) and (orientation: portrait) {
@@ -746,6 +896,38 @@ footer {
         padding-left: 5px;
     }
 
+    /* АДАПТАЦИЯ ФОРМ АВТОРИЗАЦИИ ДЛЯ ТЕЛЕФОНОВ */
+    .auth-form {
+        padding: 1.5rem;
+        margin: 1rem 0.5rem;
+        border-radius: 15px;
+    }
+
+    .form-group label {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .form-group input {
+        padding: 1rem 1.2rem;
+        font-size: 1.2rem;
+        border-radius: 12px;
+    }
+
+    .form-group input::placeholder {
+        font-size: 1.1rem;
+    }
+
+    .auth-btn {
+        padding: 1rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .auth-link {
+        font-size: 1.1rem;
+    }
+
     /* АДАПТАЦИЯ ТЕСТОВ ДЛЯ ТЕЛЕФОНОВ */
     .question-block {
         padding: 1.2rem;
@@ -791,6 +973,7 @@ footer {
         padding: 0.6rem 1.2rem !important;
         font-size: 0.9rem;
         margin: 0;
+        white-space: nowrap; /* Чтобы текст не переносился */
     }
 
     /* Стандартная навигация */
@@ -811,6 +994,7 @@ footer {
         font-size: 0.9rem;
         padding: 0.5rem 1rem !important;
         min-width: auto;
+        white-space: nowrap; /* Чтобы текст не переносился */
     }
 
     /* Hero секция */
@@ -840,6 +1024,8 @@ footer {
         padding: 1.5rem 1rem;
         min-height: 70px;
         font-size: 1rem;
+        white-space: normal; /* Разрешаем перенос текста */
+        word-break: break-word; /* Перенос длинных слов */
     }
 
     /* Статья */
@@ -864,6 +1050,22 @@ footer {
     .text-content {
         font-size: 1rem !important;
         padding-left: 8px !important;
+    }
+
+    /* Адаптация форм для маленьких экранов */
+    .auth-form {
+        padding: 1.2rem;
+        margin: 0.5rem;
+    }
+
+    .form-group input {
+        padding: 0.8rem 1rem;
+        font-size: 1.1rem;
+    }
+
+    .auth-btn {
+        padding: 0.9rem;
+        font-size: 1.1rem;
     }
 
     /* Адаптация тестов для маленьких экранов */
@@ -912,6 +1114,12 @@ footer {
         gap: 1rem;
     }
 
+    /* Адаптация форм для горизонтальных экранов */
+    .auth-form {
+        max-width: 400px;
+        padding: 1.5rem;
+    }
+
     /* Адаптация тестов для горизонтальных экранов */
     .option {
         padding: 1rem 1.5rem;
@@ -936,6 +1144,26 @@ footer {
 
     .text-content {
         font-size: 2.5rem;
+    }
+
+    /* Адаптация форм для планшетов */
+    .auth-form {
+        max-width: 450px;
+        padding: 2.5rem;
+    }
+
+    .form-group label {
+        font-size: 1.8rem;
+    }
+
+    .form-group input {
+        font-size: 1.8rem;
+        padding: 1.5rem;
+    }
+
+    .auth-btn {
+        font-size: 1.8rem;
+        padding: 1.4rem;
     }
 
     /* Адаптация тестов для планшетов */
@@ -965,6 +1193,7 @@ footer {
         padding: 0.7rem 1.5rem;
         font-size: 0.9rem;
         min-width: 100px;
+        white-space: nowrap; /* Чтобы текст не переносился */
     }
 
     .button-grid {
@@ -977,6 +1206,8 @@ footer {
         padding: 2rem 1rem;
         min-height: 100px;
         font-size: 1.2rem;
+        white-space: normal; /* Разрешаем перенос текста */
+        word-break: break-word; /* Перенос длинных слов */
     }
 
     .hero-section {
@@ -1063,6 +1294,7 @@ header {
     position: relative;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    white-space: nowrap; /* Чтобы текст не переносился */
 }
 
 /* Эффект блеска для кнопки аккаунта */
