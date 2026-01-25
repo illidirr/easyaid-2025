@@ -1,0 +1,18 @@
+# Core Django
+Django==5.2.7
+gunicorn==23.0.0
+
+# Static files
+whitenoise==6.8.1
+
+# Environment variables
+python-dotenv==1.0.1
+
+# Media files (images, videos)
+Pillow==10.3.0
+
+# Database (optional)
+psycopg2-binary==2.9.9
+
+# Security
+cryptography==42.0.5
