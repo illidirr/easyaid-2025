@@ -66,7 +66,8 @@ def group2(request):
 
 
 def page1(request):
-    videos = Video.objects.filter(page='page1')
+    # videos = Video.objects.filter(page='page1')
+    videos = []
     return render(request, 'main/page1.html', {
         'videos': videos,
         'title': 'Страница 1'
@@ -74,13 +75,12 @@ def page1(request):
 
 
 def page2(request):
-    videos = Video.objects.filter(page='page2')
+    # videos = Video.objects.filter(page='page2')
+    videos = []
     return render(request, 'main/page2.html', {
         'videos': videos,
         'title': 'Страница 2'
     })
-
-
 def page3(request):
     return render(request, 'main/page3.html')
 
@@ -90,7 +90,7 @@ def page4(request):
 
 
 def internet_fraud(request):
-    videos = Video.objects.filter(page='internet_fraud')
+    #videos = Video.objects.filter(page='internet_fraud')
     context = {
         'title': 'Интернет-мошенничество',
         'content': '''
