@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="page-content">
+    <h1>{{ title }}</h1>
+
+    <div class="text-content">
+        {{ content|safe }}
+    </div>
+
+    <div class="video-section">
+        <h2>Видеоматериалы</h2>
+
+        {% for video in videos %}
+        <div class="video-item">
+            <h3>{{ video.title }}</h3>
+
+            <!-- ПРОСТОЙ ВИДЕО ПЛЕЕР -->
+            <video controls width="800" height="450">
+                <source src="{{ video.video_file.url }}" type="video/mp4">
+            </video>
+
+            <!-- Ссылка для скачивания -->
+            <p><a href="{{ video.video_file.url }}" download>📥 Скачать видео</a></p>
+
+            {% if video.description %}
+            <p>{{ video.description }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="test-promo-section">
+        <div class="test-promo">
+            <h3>Проверьте свои знания!</h3>
+            <p>После изучения материалов пройдите тест, чтобы закрепить знания</p>
+            <a href="{% url 'test_internet' %}" class="test-promo-btn">Пройти тест</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

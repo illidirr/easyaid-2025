@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Как распознать мошенников?{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <h1>Как распознать мошенников?</h1>
+    <p>Вы можете посмотреть видео или прочитать статью</p>
+
+    <div class="button-grid">
+        <a href="{% url 'page1' %}" class="main-btn">
+            <span>смотреть видео</span>
+        </a>
+        <a href="{% url 'page3' %}" class="main-btn">
+            <span>читать статью</span>
+        </a>
+    </div>
+</div>
+
+<!-- Кнопка теста показывается только на страницах 1,2,3,4 -->
+{% if request.resolver_match.url_name in 'page1,page2,page3,page4' %}
+
+{% endif %}
+{% endblock %}
