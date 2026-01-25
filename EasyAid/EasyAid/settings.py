@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-cg8bi!!20yqvz&1zpy+bxk0932w^*$7*yp_skrvsl2_rlk#io$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True  # Измени на False для продакшена!
 
-ALLOWED_HOSTS = [''web-production-d4df1.up.railway.app',
+ALLOWED_HOSTS = ['web-production-d4df1.up.railway.app',
     'localhost',
     '127.0.0.1',
                  ]  # Разреши все хосты или укажи конкретный домен
