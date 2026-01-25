@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lorenzo Sans Bold';
+    line-height: 1.6;
+    background-color:rgb(266, 289, 274);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: rgb(169,211,197);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo h1 {
+   font-family: 'Lorenzo Sans Bold';
+    font-size: 2rem;
+    color:  rgb(48,123,142);
+    font-weight: normal;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* ОСНОВНЫЕ СТИЛИ КНОПОК С ЭФФЕКТОМ БЛЕСКА */
+.btn, .main-btn, .test-promo-btn, .test-submit-btn {
+    padding: 0.8rem 2rem;
+    background-color: rgb(164, 203, 211);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: none;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    min-width: 120px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Lorenzo Sans Bold';
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект блеска для всех кнопок */
+.btn::after, .main-btn::after, .test-promo-btn::after, .test-submit-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255,255,255,0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.btn:hover::after, .main-btn:hover::after, .test-promo-btn:hover::after, .test-submit-btn:hover::after {
+    left: 100%;
+}
+
+/* Стили для кнопки "Главная" */
+.home-btn {
+   font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(206, 229, 214);
+    color: rgb(54, 107, 43);
+
+    font-weight: normal;
+}
+
+.home-btn:hover {
+   font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(83, 126, 114);
+    color: white;
+    border: 20px solid rgb(54, 107, 43);
+}
+
+/* Стили для кнопки "Назад" */
+.back-btn {
+   font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(206, 229, 214);
+    color: rgb(54, 107, 43);
+    border: 2px solid rgb(54, 107, 43);
+    font-weight: normal;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-btn:hover {
+   font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(54, 107, 43);
+    color: white;
+    border: 2px solid rgb(54, 107, 43);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Ховер эффекты для всех кнопок */
+.btn:hover, .main-btn:hover {
+   font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(83, 126, 114);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    flex: 1;
+}
+
+/* Стили для главной страницы */
+.hero-section {
+    text-align: center;
+    padding: 6rem 2rem;
+    background-color: rgba(206, 229, 214, 0.9);
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color:rgb(48,123,142);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+    color: rgb(54, 107, 43);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+/* Стили для кнопок на главной странице */
+.button-grid {
+   font-family: 'Lorenzo Sans Bold';
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 8rem;
+    margin-top: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-btn {
+   font-family: 'Lorenzo Sans Bold';
+    padding: 2.5rem 1rem;
+    font-size: 1.4rem;
+    text-align: center;
+    background-color: rgb(48,123, 142);
+    border-radius: 60px;
+    font-weight: normal;
+    transition: all 0.3s ease;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 0.8px;
+}
+
+.main-btn:hover {
+   font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(16,58,87);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Стили для обычных страниц */
+.page-content {
+   font-family: 'Lorenzo Sans Bold';
+    background:white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.9);
+    margin: 4rem 10rem;
+}
+
+.page-content h1 {
+   font-family: 'Lorenzo Sans Bold';
+    color: rgb(54, 107, 43);
+    margin-bottom: 1.5rem;
+    font-size: 5rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.page-content h2 {
+   font-family: 'Lorenzo Sans Bold';
+    color: rgb(48, 123, 142);
+    margin: 1.5rem 0 10rem 0;
+    font-weight: normal;
+    letter-spacing: 0.8px;
+}
+
+.text-content {
+   font-family: 'Lorenzo Sans Bold';
+    line-height: 100rem;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.video-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgb(206, 229, 214);
+}
+
+.video-item {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    border: 2px solid rgb(206, 229, 214);
+    border-radius: 15px;
+    background-color: rgba(206, 229, 214, 0.2);
+}
+
+.video-item h3 {
+    color: rgb(54, 107, 43);
+    margin-bottom: 1rem;
+    font-weight: normal;
+    letter-spacing: 0.7px;
+}
+
+video {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 100%;
+}
+
+/* Стили для футера */
+footer {
+   font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(169, 211, 197);
+    color: rgb(54, 107, 43);
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: auto;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    width: 100%;
+}
+
+/* Стили для промо-блока теста */
+.test-promo-section {
+   font-family: 'Lorenzo Sans Bold';
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgb(206, 229, 214);
+}
+
+.test-promo {
+   font-family: 'Lorenzo Sans Bold';
+    background: linear-gradient(135deg, rgb(206, 229, 214), rgb(169, 211, 197));
+    padding: 5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.test-promo h3 {
+   font-family: 'Lorenzo Sans Bold';
+    color: rgb(54, 107, 43);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.test-promo p {
+   font-family: 'Lorenzo Sans Bold';
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.test-promo-btn {
+   font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(54, 107, 43);
+    color: white !important;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid rgb(54, 107, 43);
+}
+
+.test-promo-btn:hover {
+    background-color: white;
+    color: rgb(54, 107, 43) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    border: 2px solid rgb(54, 107, 43);
+}
+
+/* Стили для кнопки завершения теста */
+.test-submit-btn {
+   font-family: 'Lorenzo Sans Bold';
+    display: block;
+    background: linear-gradient(135deg, rgb(54, 107, 43), rgb(48, 123, 142));
+    color: white !important;
+    border: none;
+    padding: 1.5rem 3rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 3rem auto 1rem auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 250px;
+}
+
+.test-submit-btn:hover {
+   font-family: 'Lorenzo Sans Bold';
+    background: linear-gradient(135deg, rgb(48, 123, 142), rgb(54, 107, 43));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    color: white !important;
+}
+
+/* Стили для статей */
+.article-content {
+   font-family: 'Lorenzo Sans Bold';
+    margin-top: 2rem;
+}
+
+.scheme-item {
+   font-family: 'Lorenzo Sans Bold';
+    background: rgba(206, 229, 214, 0.2);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid rgb(169, 211, 197);
+}
+
+.scheme-item h4 {
+   font-family: 'Lorenzo Sans Bold';
+    color: rgb(54, 107, 43);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.scheme-item p {
+   font-family: 'Lorenzo Sans Bold';
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .nav-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+        min-width: 100px;
+    }
+
+    .button-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 100%;
+    }
+
+    .main-btn {
+        padding: 2rem 1rem;
+        min-height: 100px;
+        font-size: 1.2rem;
+    }
+
+    .hero-section {
+        padding: 4rem 1.5rem;
+        margin: 1rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .page-content h1 {
+        font-size: 2rem;
+    }
+
+    .page-content {
+        padding: 2rem;
+    }
+
+    .test-promo {
+        padding: 2rem 1.5rem;
+    }
+
+    .test-promo h3 {
+        font-size: 1.5rem;
+    }
+
+    .test-promo-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    .test-submit-btn {
+        padding: 1.2rem 2rem;
+        font-size: 1.2rem;
+        min-width: 200px;
+        margin: 2rem auto 1rem auto;
+    }
+
+    .scheme-item {
+        padding: 1.2rem;
+    }
+
+    footer {
+        padding: 1.5rem 0;
+    }
+}
+text-content {
+    font-size: 2.5rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.content-section {
+    margin-bottom: 3rem;
+}
+
+.intro-text {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.info-block {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(206, 229, 214, 0.3);
+    border-radius: 15px;
+}
+
+.info-block h2 {
+    color: rgb(54, 107, 43);
+    margin-bottom: 1.5rem;
+    font-size: 3.5rem;
+}
+
+.info-block h3 {
+    color: rgb(48, 123, 142);
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+
+.info-block p {
+    margin-bottom: 1.5rem;
+}
+
+.info-block ol, .info-block ul {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.info-block li {
+    margin-bottom: 0.5rem;
+}
+
+.important-text {
+    font-weight: bold;
+}
+
+.example-text {
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.conclusion-block {
+    padding: 2.5rem;
+    background: linear-gradient(135deg, rgb(206, 229, 214), rgb(169, 211, 197));
+    border-radius: 20px;
+    text-align: center;
+}
+
+.conclusion-block h2 {
+    color: rgb(54, 107, 43);
+    margin-bottom: 1.5rem;
+    font-size: 3.5rem;
+}
+
+.conclusion-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.6;
+}
+.text-content {
+    font-size: 2.5rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.content-section {
+    margin-bottom: 3rem;
+}
+
+.intro-text {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.info-block {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(206, 229, 214, 0.3);
+    border-radius: 15px;
+}
+
+.info-block h2 {
+    color: rgb(54, 107, 43);
+    margin-bottom: 1.5rem;
+    font-size: 3.5rem;
+}
+
+.info-block h3 {
+    color: rgb(48, 123, 142);
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+
+.info-block p {
+    margin-bottom: 1.5rem;
+}
+
+.info-block ul, .info-block ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.info-block li {
+    margin-bottom: 0.8rem;
+}
+
+.important-text {
+    font-weight: bold;
+}
+
+.warning-text {
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+.italic-text {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.conclusion-block {
+    padding: 2.5rem;
+    background: linear-gradient(135deg, rgb(206, 229, 214), rgb(169, 211, 197));
+    border-radius: 20px;
+    text-align: center;
+}
+
+.conclusion-block h2 {
+    color: rgb(54, 107, 43);
+    margin-bottom: 1.5rem;
+    font-size: 3.5rem;
+}
+
+.conclusion-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.6;
+        }
+        /* Размытие границ для всех элементов с border */
+[class*="content"],
+[class*="block"],
+[class*="item"],
+[class*="btn"],
+[class*="section"] {
+    border: 2px solid rgba(206, 229, 214, 0.7) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    box-shadow: 0 0 15px 3px rgba(18, 43, 29, 0.3) !important;
+}
+        /* Ваш текущий CSS код... */
+
+/* === УБИРАЕМ ТЕНИ И ПОДСВЕТКУ С ТЕКСТА === */
+
+/* Убираем тени и подсветку с текста */
+.page-content h1,
+.page-content h2,
+.info-block h2,
+.info-block h3,
+.conclusion-block h2,
+.intro-text,
+.important-text,
+.conclusion-text,
+.info-block ul,
+.info-block ol,
+.logo h1 {
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* Убираем анимации свечения */
+@keyframes titleGlow,
+@keyframes logoGlow,
+@keyframes gentleGlow,
+@keyframes buttonPulse,
+@keyframes pageFlicker {
+    /* Отключаем все анимации */
+}
+
+/* Убираем тени с текстовых элементов */
+.text-content,
+.content-section,
+.info-block p,
+.scheme-item p,
+.article-content p {
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* Убираем подсветку с body */
+body {
+    animation: none !important;
+    box-shadow: none !important;
+}
+        .page-content {
+    max-width: 80vw !important;
+    width: 80vw !important;
+    border-radius: 100px;
+    border-color: red;
+    margin-left: calc(-40vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    padding: 3rem 5% !important;
+}
+        /* === СТИЛИ ДЛЯ ТЕСТА === */
+
+.question-block {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(248, 251, 250, 0.8);
+    border-radius: 15px;
+    border: 2px solid rgba(74, 144, 226, 0.2);
+}
+
+.question-block h3 {
+    color: #2d5aa0;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.option:hover {
+    border-color: rgb(169, 211, 197);
+    background: rgba(147, 197, 253, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.5);
+}
+
+.option input[type="radio"] {
+    display: none;
+}
+
+.option span {
+    font-size: 1.6rem;
+    color: #2d3748;
+    margin-left: 1rem;
+    line-height: 1.4;
+}
+
+/* Стиль для выбранного варианта */
+.option input[type="radio"]:checked + span {
+    color: rgb(16, 58, 87);
+    background: rgb(169, 211, 197);
+    font-weight: bold;
+}
+
+.option input[type="radio"]:checked ~ .checkmark {
+    background-color: #4a90e2;
+    border-color: #4a90e2;
+}
+
+.option input[type="radio"]:checked ~ .checkmark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+/* Кастомный радио-инпут */
+.checkmark {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #cbd5e0;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.option input[type="radio"]:checked + .checkmark {
+    background-color: red;
+    border-color: red;
+}
+
+.option input[type="radio"]:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+/* Анимация при выборе */
+@keyframes selectOption {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.option input[type="radio"]:checked ~ span {
+    animation: selectOption 0.3s ease;
+}
+
+/* Стили для описания теста */
+.test-description {
+    font-size: 1.8rem;
+    color: rgb(16, 58, 87);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(206,229, 214, 0.5);
+    border-radius: 10px;
+    border-left: 4px solid rgb(169, 211, 197);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .question-block {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .question-block h3 {
+        font-size: 1.6rem;
+    }
+
+    .option {
+        padding: 1.2rem;
+    }
+
+    .option span {
+        font-size: 1.4rem;
+    }
+
+    .test-description {
+        font-size: 1.5rem;
+        padding: 1.2rem;
+    }
+}
+        .nav-buttons {
+    margin-left: auto; /* Толкает кнопки вправо */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+        /* Стили для форм авторизации */
+.auth-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #2d5aa0;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    outline: none;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.auth-link {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.auth-link a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: #e53e3e;
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+}
+
+/* Стили для личного кабинета */
+.user-info {
+    margin-bottom: 3rem;
+}
+
+.test-results {
+    margin-bottom: 3rem;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.result-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid rgba(74, 144, 226, 0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.result-card h3 {
+    color: #2d5aa0;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.score {
+    margin-bottom: 1rem;
+}
+
+.score-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+.score-percent {
+    font-size: 1.4rem;
+    color: #718096;
+}
+
+.test-date {
+    color: #718096;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.result-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.result-badge.perfect {
+    background: #c6f6d5;
+    color: #276749;
+}
+
+.result-badge.good {
+    background: #fed7d7;
+    color: #9b2c2c;
+}
+
+.result-badge.average {
+    background: #fefcbf;
+    color: #744210;
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(248, 251, 250, 0.8);
+    border-radius: 15px;
+    border: 2px dashed #cbd5e0;
+}
+
+.no-results p {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #718096;
+}
+
+.logout-btn {
+    background: #e53e3e;
+}
+
+.logout-btn:hover {
+    background: #c53030;
+}
+
+/* Обновляем навигацию для авторизованных пользователей */
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.user-greeting {
+    color: white;
+    font-size: 1.4rem;
+    margin-right: 1rem;
+}
+        /* Стили для левой секции с лого и кнопкой аккаунта */
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.account-section {
+    display: flex;
+    align-items: center;
+}
+
+.account-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: rgb(206, 229, 214);
+    color: rgb(48, 123, 142);
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.4rem;
+    font-weight: normal;
+    transition: all 0.3s ease;
+    border: 100px solid red;
+}
+
+.account-btn:hover {
+    background:red;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.account-icon {
+    font-size: 1.2rem;
+}
+
+/* Обновляем навигацию */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .logo-section {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-buttons {
+        justify-content: center;
+    }
+
+    .account-btn {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+}
+        /* Стили для личного кабинета */
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.user-welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background: rgba(169, 211, 197, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid rgba(74, 144, 226, 0.2);
+}
+
+.welcome-icon {
+    font-size: 3rem;
+}
+
+.welcome-text h2 {
+    color: rgb(48, 123, 142);
+    margin-bottom: 0.5rem;
+}
+
+.user-email {
+    color: #718096;
+    font-size: 1.6rem;
+}
+
+/* Статистика пользователя */
+.user-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid rgba(74, 144, 226, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+}
+
+.stat-info h3 {
+    color:black;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    color:rgb(54,107,43);
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Результаты тестов */
+.test-results-section h2 {
+    color: black;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+profile-results-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.profile-result-card {
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    border: 3px solid;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.profile-result-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #48bb78, #38a169);
+}
+
+.profile-result-card.отлично { border-color: #48bb78; }
+.profile-result-card.хорошо { border-color: #ed8936; }
+.profile-result-card.осторожно { border-color: #e53e3e; }
+.profile-result-card.тревога { border-color: #9b2c2c; }
+
+/* Заголовок карточки результата */
+.result-card-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc;
+}
+
+.test-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: rgb(48, 123, 142);
+    margin: 0;
+}
+
+.test-date {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+/* Основное содержимое карточки */
+.result-card-body {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Кольцевая диаграмма для профиля */
+.profile-circular-progress {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.profile-progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-progress-bg {
+    fill: none;
+    stroke: #e2e8f0;
+    stroke-width: 8;
+}
+
+.profile-progress-fill {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 1.5s ease-in-out;
+}
+
+.profile-progress-fill.отлично { stroke: #48bb78; }
+.profile-progress-fill.хорошо { stroke: #ed8936; }
+.profile-progress-fill.осторожно { stroke: #e53e3e; }
+.profile-progress-fill.тревога { stroke: #9b2c2c; }
+
+.profile-progress-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.profile-progress-percentage {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: rgb(48, 123, 142);
+    line-height: 1;
+}
+
+.profile-progress-score {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+}
+
+/* Информация о результате */
+.profile-result-info {
+    text-align: left;
+}
+
+.profile-result-level {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #2d3748;
+}
+
+.profile-result-level.отлично { color: #48bb78; }
+.profile-result-level.хорошо { color: #ed8936; }
+.profile-result-level.осторожно { color: #e53e3e; }
+.profile-result-level.тревога { color: #9b2c2c; }
+
+.profile-result-message {
+    color: #4a5568;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Детальная статистика */
+.profile-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.profile-stat-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-left: 4px solid;
+}
+
+.profile-stat-item.correct { border-left-color: #48bb78; }
+.profile-stat-item.incorrect { border-left-color: #e53e3e; }
+.profile-stat-item.total { border-left-color: rgb(169, 211, 197); }
+
+.profile-stat-icon {
+    font-size: 1.5rem;
+}
+
+.profile-stat-info {
+    text-align: left;
+}
+
+.profile-stat-number {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2d3748;
+    line-height: 1;
+}
+
+.profile-stat-label {
+    color: #718096;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+/* Карточка уровня */
+.profile-level-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-left: 5px solid;
+}
+
+.profile-level-card.отлично {
+    border-left-color: #48bb78;
+    background: linear-gradient(135deg, #f0fff4, #ffffff);
+}
+.profile-level-card.хорошо {
+    border-left-color: #ed8936;
+    background: linear-gradient(135deg, #fffaf0, #ffffff);
+}
+.profile-level-card.осторожно {
+    border-left-color: #e53e3e;
+    background: linear-gradient(135deg, #fff5f5, #ffffff);
+}
+.profile-level-card.тревога {
+    border-left-color: #9b2c2c;
+    background: linear-gradient(135deg, #fed7d7, #ffffff);
+}
+
+.profile-level-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.profile-level-info {
+    text-align: left;
+}
+
+.profile-level-info h4 {
+    color: #2d3748;
+    margin-bottom: 0.3rem;
+    font-size: 1.1rem;
+}
+
+.profile-level-info p {
+    color: #4a5568;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Адаптивность для результатов */
+@media (max-width: 768px) {
+    .profile-results-container {
+        padding: 1rem 0;
+    }
+
+    .result-card-body {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .profile-circular-progress {
+        margin: 0 auto;
+    }
+
+    .profile-result-info {
+        text-align: center;
+    }
+
+    .profile-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-level-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-level-info {
+        text-align: center;
+    }
+
+    .result-card-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-result-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .result-card-body {
+        padding: 1.5rem;
+    }
+
+    .profile-circular-progress {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-progress-percentage {
+        font-size: 1.5rem;
+    }
+}
+
+/* Интеграция с существующими стилями личного кабинета */
+.test-results-section .results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Переопределяем старые стили результатов */
+.result-card {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.result-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Убираем старые стили статусов */
+.status-badge,
+.result-badge {
+    display: none;
+}
+/* Нет результатов */
+.no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(248, 251, 250, 0.8);
+    border-radius: 15px;
+    border: 2px dashed #cbd5e0;
+}
+
+.no-results-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.no-results h3 {
+    color: black;
+    margin-bottom: 1rem;
+}
+
+.no-results p {
+    color: rgb(54,107,43);
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+.start-test-btn {
+    background: rgb(169,211,197);
+    padding: 1.2rem 2.5rem;
+    font-size: 1.6rem;
+}
+
+/* Действия профиля */
+.profile-actions {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e2e8f0;
+}
+
+.logout-btn {
+    background: #e53e3e;
+}
+
+.logout-btn:hover {
+    background: #c53030;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .user-welcome {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .user-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .results-container {
+        grid-template-columns: 1fr;
+    }
+
+    .result-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
+        /* Только для логотипа и кнопки аккаунта */
+.logo h1,
+.account-btn {
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Сохраняем ховер-эффекты для кнопки */
+.account-btn:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+        /* Стили для кнопки "Личный кабинет" как у "Главная" */
+./* УДАЛИТЕ старые стили для .account-btn (строки 1010-1028) и оставьте только эти: */
+
+/* Стили для кнопки "Личный кабинет" как у "Главная" */
+.account-btn {
+    font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(206, 229, 214);
+    color: rgb(54, 107, 43);
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: none;
+    font-weight: normal;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 120px;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Тень как у главной */
+}
+
+/* Эффект блеска для кнопки аккаунта */
+..account-btn::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        rgba(255,255,255,0.4),
+        rgba(255,255,255,0.2),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.8s ease;
+}
+
+.account-btn:hover::after {
+    left: 100%;
+}
+
+.account-btn:hover {
+    font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(83, 126, 114);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Тень при ховере как у главной */
+}
+
+/* Убираем обводки у кнопки аккаунта */
+.account-btn {
+    border: none !important;
+    outline: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}   /* Стили для оглавления */
+.table-of-contents {
+    background: rgba(206, 229, 214, 0.3);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    border-left: 4px solid rgb(169, 211, 197);
+}
+
+.table-of-contents h3 {
+    color: rgb(54, 107, 43);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+.table-of-contents ol {
+    padding-left: 2rem;
+}
+
+.table-of-contents li {
+    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
+}
+
+.table-of-contents a {
+    color: rgb(48, 123, 142);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.table-of-contents a:hover {
+    color: rgb(54, 107, 43);
+    text-decoration: underline;
+}
+        /* Убираем обводки у навигации и лого */
+nav,
+header,
+.logo h1,
+.account-btn,
+.logo-section,
+.account-section {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Убираем размытие границ для навигационных элементов */
+nav *,
+header *,
+.logo-section *,
+.account-section * {
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+/* Сохраняем только тень у header */
+header {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+        /* Сдвиг для всего текстового контента в статье */
+.page-content .text-content {
+    margin-left: 30px;
+    padding-left: 15px;
+}
+
+/* Сдвиг для intro-text */
+.intro-text {
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+/* Сдвиг для остальных элементов внутри text-content */
+.text-content p,
+.text-content ul,
+.text-content ol,
+.text-content .content-section {
+    margin-left: 15px;
+    padding-left: 10px;
+}
+
+/* Сдвиг для заголовков внутри text-content */
+.text-content h2,
+.text-content h3 {
+    margin-left: 20px;
+    padding-left: 10px;
+}
+        .page-content h1 {
+    padding-left: 40px !important;
+}
+        .test-promo-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgb(206, 229, 214);
+}
+
+.test-promo {
+    background: linear-gradient(135deg, rgb(206, 229, 214), rgb(169, 211, 197));
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.test-promo-btn {
+    background-color: rgb(54, 107, 43);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.test-promo-btn:hover {
+    background-color: white;
+    color: rgb(54, 107, 43);
+    transform: translateY(-3px);
+}
+        /* Стили для видео */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 соотношение */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 15px 0;
+    border-radius: 8px;
+    background: #000;
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.video-item {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.video-item h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .video-item {
+        padding: 15px;
+        margin-bottom: 30px;
+    }
+}
+        /* Стили для видео секции */
+.video-section {
+    margin: 40px 0;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border-left: 5px solid #007bff;
+}
+
+.video-section h2 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.video-item {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+}
+
+.video-item h3 {
+    color: #343a40;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.video-wrapper {
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.video-description {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f1f3f4;
+    border-radius: 6px;
+    border-left: 3px solid #28a745;
+}
+
+.no-videos {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .video-section {
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .video-item {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+}
+        .video-section {
+    margin: 40px 0;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.video-item {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.video-wrapper {
+    margin: 15px 0;
+}
+
+.video-wrapper video {
+    width: 100%;
+    border-radius: 8px;
+}
+        .video-section {
+    margin: 40px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.video-item {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.video-item h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+</style>
+
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}EasyAid{% endblock %}</title>
+{% load static %}
+</head>
+<body class="{% if request.resolver_match.url_name == 'index' %}index-page{% endif %}">
+    <header>
+        <nav>
+            <div class="logo-section">
+                <div class="logo">
+                    <h1>EasyAid</h1>
+                </div>
+                <div class="account-section">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'profile' %}" class="account-btn">
+                            <span class="account-icon"></span>
+                            Личный кабинет
+                        </a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="account-btn">
+                            <span class="account-icon"></span>
+                            Войти в аккаунт
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                {% if request.resolver_match.url_name != 'index' %}
+                <a href="javascript:history.back()" class="btn back-btn">← Назад</a>
+                <a href="{% url 'index' %}" class="btn home-btn">Главная</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 EasyAid. Все права защищены.</p>
+    </footer>
+
+    <script></script>
+</body>
+</html>
+
+</body>
+</html>
