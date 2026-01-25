@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-cg8bi!!20yqvz&1zpy+bxk0932w^*$7*yp_skrvsl2_rlk#io$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True  # Измени на False для продакшена!
 
-ALLOWED_HOSTS = ['*']  # Разреши все хосты или укажи конкретный домен
+ALLOWED_HOSTS = [''web-production-d4df1.up.railway.app',
+    'localhost',
+    '127.0.0.1',
+                 ]  # Разреши все хосты или укажи конкретный домен
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 
@@ -144,7 +147,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # ДОБАВЛЕНО!
@@ -164,8 +167,17 @@ LOGOUT_REDIRECT_URL = '/'
 
 # Security settings for production (опционально)
 if not DEBUG:
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+    ECURE_SSL_REDIRECT = True  # Перенаправлять HTTP на HTTPS
+    SECURE_HSTS_SECONDS = 31536000  # 1 год
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-d4df1.up.railway.app',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
+CSRF_COOKIE_SECURE = True  # True для HTTPS, False для локальной разработки
+SESSION_COOKIE_SECURE = True  # True для HTTPS, False для локальной разработки

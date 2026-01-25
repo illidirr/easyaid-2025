@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import json  # Импортируем модуль json
 
 
 class Video(models.Model):
@@ -38,7 +39,15 @@ class TestResult(models.Model):
     score = models.IntegerField()
     max_score = models.IntegerField()
     date_taken = models.DateTimeField(auto_now_add=True)
-    answers = models.JSONField()
+    answers = models.TextField(default='{}')  # Заменяем JSONField на TextField
+
+    def get_answers(self):
+        """Возвращает ответы как словарь Python"""
+        return json.loads(self.answers)
+
+    def set_answers(self, data):
+        """Сохраняет словарь как JSON строку"""
+        self.answers = json.dumps(data)
 
     def __str__(self):
         return f"{self.user.username} - {self.test_name} - {self.score}/{self.max_score}"
