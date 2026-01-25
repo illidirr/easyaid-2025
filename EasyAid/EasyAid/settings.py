@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-cg8bi!!20yqvz&1zpy+bxk0932w^*$7*yp_skrvsl2_rlk#io$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False  # Измени на False для продакшена!
+DEBUG = True  # Измени на False для продакшена!
 
 ALLOWED_HOSTS = ['*']  # Разреши все хосты или укажи конкретный домен
 
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'EasyAid.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
