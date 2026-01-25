@@ -1,0 +1,98 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+<div class="page-content">
+    <div class="profile-container">
+        <!-- Заголовок и информация пользователя -->
+        <div class="profile-header">
+            <h1>Личный кабинет</h1>
+            <div class="user-welcome">
+                <div class="welcome-icon"></div>
+                <div class="welcome-text">
+                    <h2>Добро пожаловать, {{ user.username }}!</h2>
+                    <p class="user-email">{{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статистика пользователя -->
+        <div class="user-stats">
+            <div class="stat-card">
+                <div class="stat-icon"></div>
+                <div class="stat-info">
+                    <h3>Дата регистрации</h3>
+                    <p class="stat-value">{{ user_profile.registration_date|date:"d.m.Y" }}</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon"></div>
+                <div class="stat-info">
+                    <h3>Пройдено тестов</h3>
+                    <p class="stat-value">{{ user_profile.tests_completed }}</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon"></div>
+                <div class="stat-info">
+                    <h3>В системе</h3>
+                    <p class="stat-value">{{ user_profile.registration_date|timesince }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Результаты тестов -->
+        <div class="test-results-section">
+            <h2>Результаты тестов</h2>
+
+            {% if user_results %}
+                <div class="results-container">
+                    {% for result in user_results %}
+                    <div class="result-card {% if result.score == result.max_score %}perfect{% elif result.score >= result.max_score|add:"-1" %}good{% else %}average{% endif %}">
+                        <div class="result-header">
+                            <h3>{{ result.test_name }}</h3>
+                            <div class="result-date">{{ result.date_taken|date:"d.m.Y в H:i" }}</div>
+                        </div>
+
+                        <div class="result-score">
+                            <div class="score-circle">
+                                <span class="score-number">{{ result.score }}</span>
+                                <span class="score-max">/{{ result.max_score }}</span>
+                            </div>
+                            <div class="score-percentage">
+                                {{ result.score|floatformat:0 }}% правильных ответов
+                            </div>
+                        </div>
+
+                        <div class="result-status">
+                            {% if result.score == result.max_score %}
+                                <span class="status-badge perfect">Отличный результат! </span>
+                            {% elif result.score >= result.max_score|add:"-1" %}
+                                <span class="status-badge good">Хороший результат! </span>
+                            {% else %}
+                                <span class="status-badge average">Есть над чем поработать </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-results">
+                    <div class="no-results-icon"></div>
+                    <h3>Вы еще не прошли ни одного теста</h3>
+                    <p>Пройдите тесты, чтобы отслеживать свой прогресс в обучении</p>
+                    <a href="{% url 'page1' %}" class="btn start-test-btn">Начать обучение</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Действия в профиле -->
+        <div class="profile-actions">
+            <a href="{% url 'logout' %}" class="btn logout-btn">Выйти из аккаунта</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

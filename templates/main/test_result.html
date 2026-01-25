@@ -1,0 +1,449 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="page-content">
+    <div class="modern-result-container">
+        <!-- Заголовок -->
+        <div class="result-header-modern">
+            <div class="result-icon"></div>
+            <h1>Результаты теста</h1>
+            <p class="result-subtitle">Тест: "Насколько вы защищены от мошенников?"</p>
+        </div>
+
+        <!-- Основной блок с кольцевой диаграммой -->
+        <div class="score-card-modern {{ level|lower }}">
+            <div class="circular-progress-container">
+                <div class="circular-progress">
+                    <div class="progress-ring">
+                        <svg width="200" height="200" viewBox="0 0 200 200">
+                            <!-- Фоновый круг -->
+                            <circle class="progress-bg" cx="100" cy="100" r="85" stroke-width="15"/>
+                            <!-- Прогресс -->
+                            <circle class="progress-fill" cx="100" cy="100" r="85" stroke-width="15"
+                                    stroke-dasharray="534.07" stroke-dashoffset="534.07"/>
+                        </svg>
+                    </div>
+                    <div class="progress-content">
+                        <div class="progress-percentage">{{ percentage }}%</div>
+                        <div class="progress-score">{{ score }}/{{ total }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-info">
+                <h2 class="result-level">{{ level }}</h2>
+                <p class="result-message">{{ message }}</p>
+            </div>
+        </div>
+
+        <!-- Детальная статистика -->
+        <div class="detailed-stats">
+            <h3>Детальная статистика</h3>
+            <div class="stats-grid">
+                <div class="stat-item correct">
+                    <div class="stat-icon"></div>
+                    <div class="stat-info">
+                        <div class="stat-number">{{ score }}</div>
+                        <div class="stat-label">Правильных ответов</div>
+                    </div>
+                </div>
+
+                <div class="stat-item total">
+                    <div class="stat-icon"></div>
+                    <div class="stat-info">
+                        <div class="stat-number">{{ total }}</div>
+                        <div class="stat-label">Всего вопросов</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Уровень результата -->
+        <div class="result-level-card {{ level|lower }}">
+            <div class="level-icon">
+                {% if level == "Отлично!" %}
+                {% elif level == "Хорошо" %}
+                {% elif level == "Осторожно!" %} ⚠
+                {% else %}
+                {% endif %}
+            </div>
+            <div class="level-info">
+                <h3>Ваш уровень защиты: {{ level }}</h3>
+                <p>{{ message }}</p>
+            </div>
+        </div>
+
+        <!-- Кнопки действий -->
+        <div class="action-buttons-modern">
+            <a href="{% url 'test' %}" class="btn retry-btn">
+                <span class="btn-icon"></span>
+                Пройти еще раз
+            </a>
+            <a href="{% url 'page1' %}" class="btn study-btn">
+                <span class="btn-icon"></span>
+                Изучить материалы
+            </a>
+            <a href="{% url 'profile' %}" class="btn profile-btn">
+                <span class="btn-icon"></span>
+                В личный кабинет
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.modern-result-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.result-header-modern {
+    margin-bottom: 3rem;
+}
+
+.result-header-modern .result-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.result-header-modern h1 {
+    color: rgb(48, 123, 142);
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+}
+
+.result-subtitle {
+    color: #666;
+    font-size: 1.5rem;
+}
+
+/* Карточка с результатом */
+.score-card-modern {
+    background: white;
+    padding: 2rem 1rem;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    border: 3px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.score-card-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #48bb78, #38a169);
+}
+
+.score-card-modern.отлично { border-color: #48bb78; }
+.score-card-modern.хорошо { border-color: #ed8936; }
+.score-card-modern.осторожно { border-color: #e53e3e; }
+.score-card-modern.тревога { border-color: #9b2c2c; }
+
+/* Кольцевая диаграмма */
+.circular-progress-container {
+    margin-bottom: 2rem;
+}
+
+.circular-progress {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.progress-bg {
+    fill: none;
+    stroke: rgb(48,123,142);
+}
+
+.progress-fill {
+    fill: none;
+    stroke: url(#progressGradient);
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 1.5s ease-in-out;
+}
+
+.progress-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-percentage {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: rgb(48, 123, 142);
+    line-height: 1;
+}
+
+.progress-score {
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+/* Градиент для прогресса */
+.progress-fill.отлично { stroke: #48bb78; }
+.progress-fill.хорошо { stroke: #ed8936; }
+.progress-fill.осторожно { stroke: #e53e3e; }
+.progress-fill.тревога { stroke: #9b2c2c; }
+
+/* Информация о результате */
+.result-info {
+    margin-top: 1rem;
+}
+
+.result-level {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2d3748;
+}
+
+.result-message {
+    color: #4a5568;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Детальная статистика */
+.detailed-stats {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+}
+
+.detailed-stats h3 {
+    color: rgb(48, 123, 142);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.stat-item {
+    background: white;
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-left: 4px solid;
+}
+
+.stat-item.correct { border-left-color: #48bb78; }
+.stat-item.incorrect { border-left-color: #e53e3e; }
+.stat-item.total { border-left-color: rgb(169, 211, 197); }
+
+.stat-icon {
+    font-size: 2rem;
+}
+
+.stat-info {
+    text-align: left;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2d3748;
+    line-height: 1;
+}
+
+.stat-label {
+    color: #718096;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+/* Карточка уровня */
+.result-level-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-left: 5px solid;
+}
+
+.result-level-card.отлично { border-left-color: #48bb78; background: linear-gradient(135deg, #f0fff4, #ffffff); }
+.result-level-card.хорошо { border-left-color: #ed8936; background: linear-gradient(135deg, #fffaf0, #ffffff); }
+.result-level-card.осторожно { border-left-color: #e53e3e; background: linear-gradient(135deg, #fff5f5, #ffffff); }
+.result-level-card.тревога { border-left-color: #9b2c2c; background: linear-gradient(135deg, #fed7d7, #ffffff); }
+
+.level-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.level-info {
+    text-align: left;
+}
+
+.level-info h3 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.level-info p {
+    color: #4a5568;
+    margin: 0;
+}
+
+/* Кнопки действий */
+.action-buttons-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.action-buttons-modern .btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    border-radius: 150px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.retry-btn {
+    background: rgb(54, 107, 43);
+    color: white;
+}
+
+.study-btn {
+    background: rgb(54, 107, 43);
+    color: white;
+}
+
+.profile-btn {
+   background: rgb(54, 107, 43);
+    color: white;
+}
+
+.action-buttons-modern .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-level-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .level-info {
+        text-align: center;
+    }
+
+    .action-buttons-modern {
+        grid-template-columns: 1fr;
+    }
+
+    .circular-progress {
+        width: 150px;
+        height: 150px;
+    }
+
+    .progress-percentage {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .score-card-modern {
+        padding: 2rem 1rem;
+    }
+
+    .detailed-stats {
+        padding: 1.5rem;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Анимация кольцевой диаграммы
+    const progressFill = document.querySelector('.progress-fill');
+    const percentage = {{ percentage }};
+    const circumference = 2 * Math.PI * 85; // 2πr
+    const offset = circumference - (percentage / 100) * circumference;
+
+    // Устанавливаем начальное значение
+    progressFill.style.strokeDasharray = `${circumference} ${circumference}`;
+    progressFill.style.strokeDashoffset = circumference;
+
+    // Запускаем анимацию
+    setTimeout(() => {
+        progressFill.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+        progressFill.style.strokeDashoffset = offset;
+
+        // Добавляем класс уровня для цвета
+        progressFill.classList.add('{{ level|lower }}');
+    }, 500);
+
+    // Анимация чисел (опционально)
+    const statNumbers = document.querySelectorAll('.stat-number');
+    statNumbers.forEach(stat => {
+        const finalValue = parseInt(stat.textContent);
+        let currentValue = 0;
+        const duration = 1500;
+        const increment = finalValue / (duration / 16);
+
+        const timer = setInterval(() => {
+            currentValue += increment;
+            if (currentValue >= finalValue) {
+                currentValue = finalValue;
+                clearInterval(timer);
+            }
+            stat.textContent = Math.floor(currentValue);
+        }, 16);
+    });
+});
+</script>
+{% endblock %}
