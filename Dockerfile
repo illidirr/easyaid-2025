@@ -9,5 +9,5 @@ COPY . .
 
 RUN python manage.py collectstatic --noinput
 
-# Фиксированный порт 8080
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+# ИСПРАВЛЕННАЯ СТРОКА - используйте переменную PORT
+CMD python manage.py migrate && gunicorn EasyAid.wsgi --bind 0.0.0.0:$PORT
