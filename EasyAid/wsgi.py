@@ -13,6 +13,4 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EasyAid.settings')
 
 application = get_wsgi_application()
-
-from whitenoise import WhiteNoise
-application = WhiteNoise(application, root=os.path.join(os.path.dirname(__file__), 'EasyAid/media'))
+# Удалите строку с WhiteNoise - media файлы и так будут обслуживаться в DEBUG режиме
