@@ -33,9 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-cg8bi!!20yqvz&1zpy+bx
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
-if not ALLOWED_HOSTS or ALLOWED_HOSTS[0] == '':
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.railway.app']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -150,8 +148,9 @@ LOGOUT_REDIRECT_URL = '/'
 
 # Security settings for production
 CSRF_TRUSTED_ORIGINS = [
-    'https://easyaid-2025-production.up.railway.app',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
+    'https://*.railway.app',
+    'http://*.railway.app',
+    'https://*.onrender.com',
+    'http://*.onrender.com',
 ]
 
