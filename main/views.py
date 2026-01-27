@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import RegistrationForm, LoginForm
 from .models import TestResult, UserProfile, Video
+from django.http import HttpResponse
 
 
 
