@@ -1,1 +1,1 @@
-web: gunicorn EasyAid.EasyAid.wsgi:application --bind 0.0.0.0:$PORT
+gunicorn EasyAid.wsgi:application --bind 0.0.0.0:8080
