@@ -17,6 +17,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-cg8bi!!20yqvz&1zpy+bx
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
+    'web-production-f1f2b.up.railway.app',
     'web-production-d4df1.up.railway.app',
     'localhost',
     '127.0.0.1',
@@ -128,6 +129,7 @@ LOGOUT_REDIRECT_URL = '/'
 
 # Security settings for production
 CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-f1f2b.up.railway.app',
     'https://web-production-d4df1.up.railway.app',
     'https://*.up.railway.app',
     'https://*.railway.app',
@@ -149,3 +151,11 @@ else:
     SECURE_HSTS_PRELOAD = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Автоматическое определение хоста Railway
+RAILWAY_STATIC_URL = os.environ.get('RAILWAY_STATIC_URL')
+if RAILWAY_STATIC_URL:
+    # Если запущено на Railway, добавляем хост автоматически
+    railway_host = RAILWAY_STATIC_URL.replace('https://', '').replace('http://', '').split('/')[0]
+    if railway_host and railway_host not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(railway_host)
