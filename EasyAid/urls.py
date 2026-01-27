@@ -4,8 +4,8 @@ from django.http import HttpResponse  # ДОБАВЬТЕ ЭТУ СТРОКУ
 
 # Создайте функции прямо здесь
 def index(request):
-    return HttpResponse("EasyAid работает!")
-
+    """Главная страница"""
+    return render(request, 'main/index.html')
 def health_check(request):
     return HttpResponse("OK", status=200)
 
