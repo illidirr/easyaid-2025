@@ -9,5 +9,5 @@ COPY . .
 
 RUN python manage.py collectstatic --noinput
 
-# Исправьте эту строку:
-CMD ["gunicorn", "gEasyAid.wsgi:application", ""--bind", "0.0.0.0:8080"]"]
+# Ключевая строка - команда запуска
+CMD gunicorn EasyAid.wsgi:application --bind 0.0.0.0:$PORT
