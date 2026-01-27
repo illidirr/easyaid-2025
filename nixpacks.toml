@@ -1,8 +1,11 @@
 [phases.setup]
-cmds = ["pip install -r requirements.txt"]
+depends = ["python3", "python3-pip", "python3-venv"]
 
 [phases.build]
-cmds = ["python manage.py collectstatic --noinput"]
+cmds = ["pip install -r requirements.txt"]
+
+[phases.install]
+cmds = ["python -m venv /opt/venv", ". /opt/venv/bin/activate && pip install -r requirements.txt"]
 
 [start]
-cmd = "gunicorn EasyAid.wsgi:application --bind 0.0.0.0:$PORT"
+cmd = "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn EasyAid.wsgi:application --bind 0.0.0.0:$PORT"
