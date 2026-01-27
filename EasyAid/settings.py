@@ -136,4 +136,5 @@ CSRF_TRUSTED_ORIGINS = [
     'https://easyaid-2025-production.up.railway.app',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
+]
 
