@@ -4,8 +4,7 @@ Django settings for EasyAid project.
 
 from pathlib import Path
 import os
-from urllib.parse import urlparse  # Добавьте этот импорт
-import dj_database_url  # Добавьте этот импорт
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,7 +15,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-cg8bi!!20yqvz&1zpy+bx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+if not ALLOWED_HOSTS or ALLOWED_HOSTS[0] == '':
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.railway.app']
 
 # Application definition
 INSTALLED_APPS = [
@@ -26,12 +28,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main',
+    'main',  # ваше приложение
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ДОЛЖЕН БЫТЬ ПОСЛЕ SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -40,13 +42,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'EasyAid.urls'  # Исправлено
+ROOT_URLCONF = 'EasyAid.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / 'templates'],  # Глобальные шаблоны
+        'APP_DIRS': True,  # Ищет шаблоны в папках приложений
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -103,17 +105,23 @@ TIME_ZONE = 'Europe/Moscow'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# ============ СТАТИЧЕСКИЕ ФАЙЛЫ ============
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "EasyAid/static",  # Путь к вашим статическим файлам
-]
+
+# Путь, куда collectstatic собирает статические файлы
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Дополнительные директории со статическими файлами
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # Ваши собственные статические файлы
+]
+
+# Для whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Media files
+# ============ МЕДИА ФАЙЛЫ ============
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'EasyAid/media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -125,9 +133,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 # Security settings for production
 CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-f1f2b.up.railway.app',
-    'https://web-production-d4df1.up.railway.app',
-    'https://*.up.railway.app',
     'https://*.railway.app',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
@@ -142,16 +147,8 @@ else:
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = True
-    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
-
-# Автоматическое определение хоста Railway
-RAILWAY_STATIC_URL = os.environ.get('RAILWAY_STATIC_URL')
-if RAILWAY_STATIC_URL:
-    # Если запущено на Railway, добавляем хост автоматически
-    railway_host = RAILWAY_STATIC_URL.replace('https://', '').replace('http://', '').split('/')[0]
-    if railway_host and railway_host not in ALLOWED_HOSTS:
-        ALLOWED_HOSTS.append(railway_host)
