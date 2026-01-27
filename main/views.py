@@ -229,3 +229,6 @@ def test_internet(request):
 def health_check(request):
     """Простой health check для Railway"""
     return HttpResponse("OK", status=200)
+
+def simple_test(request):
+    return HttpResponse("Django is working!", status=200)
