@@ -10,7 +10,10 @@ def index_view(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),  # Главные URL из приложения main
+    path('', include('main.urls')),
+    path('health/', health_check),
+    path('health/', views.health_check, name='health_check'),
+    # Главные URL из приложения main
 ]
 
 # В режиме DEBUG добавляем обслуживание медиафайлов
