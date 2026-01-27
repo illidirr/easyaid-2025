@@ -225,3 +225,6 @@ def test_internet(request):
 
     # Если GET запрос, просто показываем форму теста
     return render(request, 'main/test_internet.html')
+
+def health_check(request):
+    return HttpResponse("OK")

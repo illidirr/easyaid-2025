@@ -15,4 +15,4 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EasyAid.settings')
 application = get_wsgi_application()
 
 from whitenoise import WhiteNoise
-application = WhiteNoise(application, root=os.path.join(os.path.dirname(__file__), 'media'))  # Добавьте закрывающую скобку')
+application = WhiteNoise(application, root=os.path.join(os.path.dirname(__file__), 'EasyAid/media'))
