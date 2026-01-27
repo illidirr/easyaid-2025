@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-
+from main import views
 urlpatterns = [
     path('network-test/', views.network_test, name='network_test'),
     path('health/', views.health_check, name='health_check'),
