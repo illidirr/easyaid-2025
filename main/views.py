@@ -227,4 +227,5 @@ def test_internet(request):
     return render(request, 'main/test_internet.html')
 
 def health_check(request):
-    return HttpResponse("OK")
+    """Простой health check для Railway"""
+    return HttpResponse("OK", status=200)
