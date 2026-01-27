@@ -10,6 +10,16 @@ def index(request):
     """Главная страница"""
     return render(request, 'main/index.html')
 
+def network_test(request):
+    """Тест сетевого соединения"""
+    hostname = socket.gethostname()
+    return HttpResponse(f"""
+    <h1>Network Test</h1>
+    <p>Hostname: {hostname}</p>
+    <p>Time: {datetime.datetime.now()}</p>
+    <p>Request path: {request.path}</p>
+    <p>Remote IP: {request.META.get('REMOTE_ADDR', 'N/A')}</p>
+    """)
 
 def register_view(request):
     if request.method == 'POST':
