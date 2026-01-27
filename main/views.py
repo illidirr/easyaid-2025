@@ -7,7 +7,7 @@ from .forms import RegistrationForm, LoginForm
 from .models import TestResult, UserProfile, Video
 
 def index(request):
-    """Главная страница"""
+    """Главная страница - использует простой шаблон"""
     return render(request, 'main/index.html')
 
 def network_test(request):
