@@ -6,9 +6,6 @@ from .forms import RegistrationForm, LoginForm
 from .models import TestResult, UserProfile, Video
 
 
-def index(request):
-    return render(request, 'main/index.html')
-
 
 def register_view(request):
     if request.method == 'POST':
