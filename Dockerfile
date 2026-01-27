@@ -10,3 +10,4 @@ COPY . .
 RUN python manage.py collectstatic --noinput
 
 # ИСПРАВЛЕННАЯ СТРОКА - используйте переменную PORT
+CMD gunicorn EasyAid.wsgi --bind 0.0.0.0:$PORT
