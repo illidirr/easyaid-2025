@@ -9,5 +9,5 @@ COPY . .
 
 RUN python manage.py collectstatic --noinput
 
-# Ключевая строка - команда запуска
-CMD gunicorn EasyAid.wsgi:application --bind 0.0.0.0:$PORT
+# Фиксированный порт 8080
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
