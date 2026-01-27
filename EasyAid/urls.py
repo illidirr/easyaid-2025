@@ -1,6 +1,10 @@
+from django.http import HttpResponse
 from django.contrib import admin
 from django.urls import path
-from django.http import HttpResponse  # ДОБАВЬТЕ ЭТУ СТРОКУ
+from django.shortcuts import render
+
+
+# ДОБАВЬТЕ ЭТУ СТРОКУ
 
 # Создайте функции прямо здесь
 def index(request):
