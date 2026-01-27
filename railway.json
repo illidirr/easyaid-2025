@@ -5,10 +5,8 @@
     "buildCommand": "pip install -r requirements.txt"
   },
   "deploy": {
-    "startCommand": "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn EasyAid.wsgi:application",
-    "healthcheckPath": "/network-test/",
-    "healthcheckTimeout": 300,
-    "restartPolicyType": "ON_FAILURE",
-    "restartPolicyMaxRetries": 10
+    "startCommand": "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn EasyAid.wsgi:application --bind 0.0.0.0:$PORT",
+    "healthcheckPath": "/health/",
+    "healthcheckTimeout": 300
   }
-}запушит
+}
