@@ -1328,6 +1328,202 @@ header {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
+        /* Добавьте в конец base.html после существующих стилей */
+
+/* Стили для profile.html */
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.user-welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.welcome-text h2 {
+    color: rgb(48, 123, 142);
+    margin-bottom: 0.5rem;
+}
+
+.user-email {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.user-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-left: 4px solid rgb(169, 211, 197);
+}
+
+.stat-info h3 {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    color: rgb(48, 123, 142);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.test-results-section {
+    margin-bottom: 3rem;
+}
+
+.test-results-section h2 {
+    color: rgb(48, 123, 142);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.results-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.result-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.result-header h3 {
+    color: rgb(54, 107, 43);
+    margin: 0;
+}
+
+.result-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.result-score {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.score-circle {
+    background: rgb(169, 211, 197);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.score-max {
+    font-size: 0.8rem;
+}
+
+.score-percentage {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.result-status {
+    margin-top: 1rem;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.status-badge.perfect {
+    background: #48bb78;
+    color: white;
+}
+
+.status-badge.good {
+    background: #ed8936;
+    color: white;
+}
+
+.status-badge.average {
+    background: #e53e3e;
+    color: white;
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(206, 229, 214, 0.3);
+    border-radius: 15px;
+}
+
+.no-results h3 {
+    color: rgb(48, 123, 142);
+    margin-bottom: 0.5rem;
+}
+
+.no-results p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.start-test-btn {
+    background: rgb(54, 107, 43);
+    color: white;
+}
+
+.profile-actions {
+    text-align: center;
+}
+
+.logout-btn {
+    background: #e53e3e;
+    color: white;
+}
+
+.logout-btn:hover {
+    background: #c53030;
+}
     </style>
 
     <meta charset="UTF-8">

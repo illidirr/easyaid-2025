@@ -6,7 +6,8 @@ from django.contrib import messages
 from .forms import RegistrationForm, LoginForm
 from .models import TestResult, UserProfile, Video
 
-
+def index(request):
+    return render(request, 'main/index.html')
 
 
 def register_view(request):
@@ -66,7 +67,6 @@ def group2(request):
 
 def page1(request):
     videos = Video.objects.filter(page='page1')
-    videos = []
     return render(request, 'main/page1.html', {
         'videos': videos,
         'title': 'Страница 1'
@@ -75,7 +75,6 @@ def page1(request):
 
 def page2(request):
     videos = Video.objects.filter(page='page2')
-    videos = []
     return render(request, 'main/page2.html', {
         'videos': videos,
         'title': 'Страница 2'
