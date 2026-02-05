@@ -100,9 +100,11 @@ def page3(request):
 
 def page4(request):
     return render(request, 'main/page4.html')
-
 def page5(request):
-    return render(request, 'main/page5.html')
+    """Страница словарика с базовыми цифровыми понятиями"""
+    return render(request, 'main/page5.html', {
+        'title': 'Словарик - Базовые цифровые понятия'
+    })
 
 def internet_fraud(request):
     videos = Video.objects.filter(page='internet_fraud')
