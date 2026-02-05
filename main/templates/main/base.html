@@ -48,18 +48,21 @@ nav {
     margin-left: auto;
 }
 
-/* ОСНОВНЫЕ СТИЛИ КНОПОК С ЭФФЕКТОМ БЛЕСКА */
-.btn, .main-btn, .test-promo-btn, .test-submit-btn, .auth-btn {
+/* ОСНОВНЫЕ СТИЛИ ВСЕХ КНОПОК НАВИГАЦИИ ОДИНАКОВЫЕ */
+.btn, .main-btn, .test-promo-btn, .test-submit-btn, .auth-btn, 
+.back-btn, .home-btn, .dictionary-btn, .account-btn {
     padding: 0.8rem 2rem;
-    background-color: rgb(164, 203, 211);
-    color: white;
+    background-color: rgb(206, 229, 214);
+    color: rgb(54, 107, 43);
     text-decoration: none;
     border-radius: 50px;
     transition: all 0.3s ease;
     border: none;
-    font-weight: bold;
+    font-weight: normal;
     text-align: center;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     min-width: 120px;
     cursor: pointer;
     font-size: 1rem;
@@ -67,73 +70,75 @@ nav {
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
-    white-space: nowrap; /* Чтобы текст не переносился */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    white-space: nowrap;
 }
 
 /* Эффект блеска для всех кнопок */
-.btn::after, .main-btn::after, .test-promo-btn::after, .test-submit-btn::after, .auth-btn::after {
+.btn::after, .main-btn::after, .test-promo-btn::after, .test-submit-btn::after, 
+.auth-btn::after, .back-btn::after, .home-btn::after, .dictionary-btn::after, 
+.account-btn::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
     background: linear-gradient(
         45deg,
         transparent,
-        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.2),
+        rgba(255,255,255,0.4),
+        rgba(255,255,255,0.2),
         transparent
     );
     transform: rotate(45deg);
-    transition: all 0.5s ease;
+    transition: all 0.8s ease;
 }
 
-.btn:hover::after, .main-btn:hover::after, .test-promo-btn:hover::after, .test-submit-btn:hover::after, .auth-btn:hover::after {
+.btn:hover::after, .main-btn:hover::after, .test-promo-btn:hover::after, 
+.test-submit-btn:hover::after, .auth-btn:hover::after, .back-btn:hover::after, 
+.home-btn:hover::after, .dictionary-btn:hover::after, .account-btn:hover::after {
     left: 100%;
 }
 
-/* Стили для кнопки "Главная" */
-.home-btn {
-    font-family: 'Lorenzo Sans Bold';
-    background-color: rgb(206, 229, 214);
-    color: rgb(54, 107, 43);
-    font-weight: normal;
-}
-
-.home-btn:hover {
+/* Ховер эффекты для всех кнопок навигации одинаковые */
+.back-btn:hover, .home-btn:hover, .dictionary-btn:hover, .account-btn:hover {
     font-family: 'Lorenzo Sans Bold';
     background-color: rgb(83, 126, 114);
     color: white;
-    border: 2px solid rgb(54, 107, 43);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
-/* Стили для кнопки "Назад" */
-.back-btn {
+/* ОСОБЫЕ СТИЛИ ТОЛЬКО ДЛЯ ОСНОВНЫХ КНОПОК (не навигация) */
+.main-btn {
     font-family: 'Lorenzo Sans Bold';
-    background-color: rgb(206, 229, 214);
-    color: rgb(54, 107, 43);
-    border: 2px solid rgb(54, 107, 43);
+    padding: 2.5rem 1rem;
+    font-size: 1.4rem;
+    text-align: center;
+    background-color: rgb(48,123, 142);
+    color: white;
+    border-radius: 60px;
     font-weight: normal;
-    display: inline-flex;
+    transition: all 0.3s ease;
+    min-height: 120px;
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    text-decoration: none;
+    letter-spacing: 0.8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Разрешаем перенос текста */
+    word-break: break-word; /* Перенос длинных слов */
 }
 
-.back-btn:hover {
+.main-btn:hover {
     font-family: 'Lorenzo Sans Bold';
-    background-color: rgb(54, 107, 43);
-    color: white;
-    border: 2px solid rgb(54, 107, 43);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-
-/* Ховер эффекты для всех кнопок */
-.btn:hover, .main-btn:hover {
-    font-family: 'Lorenzo Sans Bold';
-    background-color: rgb(83, 126, 114);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    background-color: rgb(16,58,87);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
 main {
@@ -183,35 +188,6 @@ main {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.main-btn {
-    font-family: 'Lorenzo Sans Bold';
-    padding: 2.5rem 1rem;
-    font-size: 1.4rem;
-    text-align: center;
-    background-color: rgb(48,123, 142);
-    border-radius: 60px;
-    font-weight: normal;
-    transition: all 0.3s ease;
-    min-height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    letter-spacing: 0.8px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal; /* Разрешаем перенос текста */
-    word-break: break-word; /* Перенос длинных слов */
-}
-
-.main-btn:hover {
-    font-family: 'Lorenzo Sans Bold';
-    background-color: rgb(16,58,87);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
 /* === СТИЛИ ДЛЯ СТАТЕЙ С БОЛЬШИМ ТЕКСТОМ === */
@@ -967,7 +943,7 @@ footer {
         justify-content: flex-end;
     }
 
-    .back-btn, .home-btn {
+    .back-btn, .home-btn, .dictionary-btn, .account-btn {
         min-width: auto !important;
         width: auto !important;
         padding: 0.6rem 1.2rem !important;
@@ -988,13 +964,6 @@ footer {
 
     .logo h1 {
         font-size: 1.5rem;
-    }
-
-    .account-btn {
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem !important;
-        min-width: auto;
-        white-space: nowrap; /* Чтобы текст не переносился */
     }
 
     /* Hero секция */
@@ -1084,7 +1053,7 @@ footer {
         gap: 0.5rem;
     }
 
-    .back-btn, .home-btn {
+    .back-btn, .home-btn, .dictionary-btn, .account-btn {
         padding: 0.5rem 1rem !important;
         font-size: 0.85rem;
     }
@@ -1271,64 +1240,6 @@ header,
 header {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
 }
-
-/* Стили для кнопки "Личный кабинет" */
-.account-btn {
-    font-family: 'Lorenzo Sans Bold';
-    background-color: rgb(206, 229, 214);
-    color: rgb(54, 107, 43);
-    padding: 0.8rem 2rem;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    border: none;
-    font-weight: normal;
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-width: 120px;
-    cursor: pointer;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    white-space: nowrap; /* Чтобы текст не переносился */
-}
-
-/* Эффект блеска для кнопки аккаунта */
-.account-btn::after {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: -100%;
-    width: 300%;
-    height: 300%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255,255,255,0.2),
-        rgba(255,255,255,0.4),
-        rgba(255,255,255,0.2),
-        transparent
-    );
-    transform: rotate(45deg);
-    transition: all 0.8s ease;
-}
-
-.account-btn:hover::after {
-    left: 100%;
-}
-
-.account-btn:hover {
-    font-family: 'Lorenzo Sans Bold';
-    background-color: rgb(83, 126, 114);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-        /* Добавьте в конец base.html после существующих стилей */
 
 /* Стили для profile.html */
 .profile-container {
@@ -1524,88 +1435,22 @@ header {
 .logout-btn:hover {
     background: #c53030;
 }
-.dictionary-btn {
-    font-family: 'Lorenzo Sans Bold';
-    background-color: rgb(206, 229, 214); /* Фиолетовый для выделения */
-    color: rgb(54, 107, 43);
-    padding: 0.8rem 1.5rem;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    border: 2px solid rgb(206, 229, 214);
-    font-weight: normal;
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-width: auto;
-    cursor: pointer;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
-    margin-right: 0.5rem;
-    white-space: nowrap;
-}
 
-/* Эффект блеска для кнопки словарика */
-.dictionary-btn::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255,255,255,0.1),
-        transparent
-    );
-    transform: rotate(45deg);
-    transition: all 0.5s ease;
-}
-
-.dictionary-btn:hover::after {
-    left: 100%;
-}
-
-.dictionary-btn:hover {
-    font-family: 'Lorenzo Sans Bold';
-    background-color: rgb(206, 229, 214);
-    color: rgb(54, 107, 43);
-    padding: 0.8rem 2rem;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    border: none;
-    font-weight: normal;
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-width: 120px;
-    cursor: pointer;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    white-space: nowrap;
-}
 .page-content .back-btn {
     font-size: 1.8rem;
     padding: 1.2rem 2.5rem;
     margin-top: 2rem;
     display: inline-block;
 }
-        @media (max-width: 768px) {
+
+@media (max-width: 768px) {
     .page-content .back-btn {
         font-size: 1.2rem;
         padding: 1rem 2rem;
         margin-top: 1.5rem;
     }
 }
+
 /* Стиль для account-section чтобы кнопки были в строку */
 .account-section {
     display: flex;
@@ -1629,16 +1474,14 @@ header {
                 <div class="account-section">
                      <a href="/page5/" class="dictionary-btn">   
                           Словарь
-            </a>
+                    </a>
                     {% if user.is_authenticated %}
                         <a href="{% url 'profile' %}" class="account-btn">
-                            <span class="account-icon"></span>
-                            Личный кабинет
+                             Личный кабинет
                         </a>
                     {% else %}
                         <a href="/login/" class="account-btn">
-                            <span class="account-icon"></span>
-                            Войти в аккаунт
+                             Войти в аккаунт
                         </a>
                     {% endif %}
                 </div>
@@ -1647,7 +1490,7 @@ header {
             <div class="nav-buttons">
                 {% if request.resolver_match.url_name != 'index' %}
                 <a href="javascript:history.back()" class="btn back-btn">← Назад</a>
-                <a href="{% url 'index' %}" class="btn home-btn">Главная</a>
+                <a href="{% url 'index' %}" class="btn home-btn"> Главная</a>
                 {% endif %}
             </div>
         </nav>
