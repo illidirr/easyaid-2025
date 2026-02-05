@@ -14,6 +14,9 @@ def health_check(request):
     return HttpResponse("OK", status=200)
 
 urlpatterns = [
+    path('', views.index, name='index'),
+    path('page1/', views.page1, name='page1'),
+    path('page2/', views.page2, name='page2'),
     path('', index, name='index'),
     path('health/', health_check, name='health_check'),
     path('admin/', admin.site.urls),

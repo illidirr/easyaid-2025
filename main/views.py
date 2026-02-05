@@ -80,6 +80,8 @@ def page1(request):
     videos = Video.objects.filter(page='page1')
     return render(request, 'main/page1.html', {
         'videos': videos,
+        'url': 'https://vkvideo.ru/video_ext.php?oid=-235747061&id=456239018&hash=17275f9451c967ae&hd=3',
+        'description': 'Узнайте, как распознать телефонных мошенников',
         'title': 'Страница 1'
     })
 
@@ -88,6 +90,8 @@ def page2(request):
     videos = Video.objects.filter(page='page2')
     return render(request, 'main/page2.html', {
         'videos': videos,
+        'url': 'https://vkvideo.ru/video_ext.php?oid=-235747061&id=456239017&hash=0ee516a8a71247d7&hd=3',
+        'description': 'Безопасность в интернете для начинающих',
         'title': 'Страница 2'
     })
 def page3(request):
