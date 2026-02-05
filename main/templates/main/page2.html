@@ -6,27 +6,17 @@
 <div class="page-content">
     <h1>Безопасное пользование интернетом.</h1>
 
-    <!-- Ваш существующий контент страницы 2 -->
-
     <!-- Секция с видео -->
     <div class="video-section">
         <h2>Советы о том, как безопасно пользоваться интернетом</h2>
-
-        {% for video in videos %}
-        <div class="video-item" style="margin: 30px 0; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-            <h3>{{ video.title }}</h3>
-            <video controls width="100%" style="max-width: 800px; border-radius: 8px;">
-                <source src="{{ video.video_file.url }}" type="video/mp4">
-            </video>
-            {% if video.description %}
-            <p style="margin-top: 10px;">{{ video.description }}</p>
-            {% endif %}
+        <div class="video-responsive-container">
+            <iframe 
+                src="https://vkvideo.ru/video_ext.php?oid=-235747061&id=456239017&hash=0ee516a8a71247d7&hd=3"
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                allowfullscreen>
+            </iframe>
         </div>
-        {% empty %}
-        <p>Видео пока нет.</p>
-        {% endfor %}
     </div>
-</div>
 
     <!-- Кнопка перехода на тест -->
     <div class="test-promo-section">
