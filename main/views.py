@@ -101,6 +101,8 @@ def page3(request):
 def page4(request):
     return render(request, 'main/page4.html')
 
+def page5(request):
+    return render(request, 'main/page5.html')
 
 def internet_fraud(request):
     videos = Video.objects.filter(page='internet_fraud')
