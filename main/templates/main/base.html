@@ -1524,6 +1524,67 @@ header {
 .logout-btn:hover {
     background: #c53030;
 }
+        .dictionary-btn {
+    font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(142, 68, 173); /* Фиолетовый для выделения */
+    color: white;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: 2px solid rgb(142, 68, 173);
+    font-weight: normal;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: auto;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+
+/* Эффект блеска для кнопки словарика */
+.dictionary-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255,255,255,0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.dictionary-btn:hover::after {
+    left: 100%;
+}
+
+.dictionary-btn:hover {
+    font-family: 'Lorenzo Sans Bold';
+    background-color: rgb(106, 13, 173);
+    color: white;
+    border: 2px solid rgb(106, 13, 173);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Стиль для account-section чтобы кнопки были в строку */
+.account-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
     </style>
 
     <meta charset="UTF-8">
