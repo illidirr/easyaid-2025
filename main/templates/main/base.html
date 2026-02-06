@@ -1424,12 +1424,13 @@ header {
     font-weight: bold;
 }
 
-/* Иконки для кнопок */
+/* Иконки для кнопок - ОСТАВЛЯЕМ ТОЛЬКО СТРЕЛКУ У КНОПКИ НАЗАД */
 .back-btn {
     position: relative;
     padding-left: 3rem !important;
 }
 
+/* ОДНА СТРЕЛКА ДЛЯ КНОПКИ НАЗАД */
 .back-btn::before {
     content: "←";
     position: absolute;
@@ -1438,40 +1439,11 @@ header {
     font-weight: bold;
 }
 
-.home-btn {
-    position: relative;
-    padding-left: 3rem !important;
-}
-
-.home-btn::before {
-    content: "";
-    position: absolute;
-    left: 1.5rem;
-    font-size: 1.6rem;
-}
-
-.dictionary-btn {
-    position: relative;
-    padding-left: 3rem !important;
-}
-
-.dictionary-btn::before {
-    content: "";
-    position: absolute;
-    left: 1.5rem;
-    font-size: 1.6rem;
-}
-
+/* УБИРАЕМ ВСЕ ЭМОДЗИ И ИКОНКИ У ДРУГИХ КНОПОК */
+.home-btn,
+.dictionary-btn,
 .account-btn {
-    position: relative;
-    padding-left: 3rem !important;
-}
-
-.account-btn::before {
-    content: "";
-    position: absolute;
-    left: 1.5rem;
-    font-size: 1.6rem;
+    padding-left: 2rem !important; /* Стандартный отступ без иконки */
 }
 
 /* АДАПТИВНОЕ РАЗМЕЩЕНИЕ КНОПОК */
@@ -1707,14 +1679,20 @@ header {
         box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     }
     
-    /* Иконки для кнопок */
-    .mobile-nav-btn.back-btn::before,
+    /* ОДНА СТРЕЛКА ТОЛЬКО ДЛЯ КНОПКИ НАЗАД В МОБИЛЬНОЙ ВЕРСИИ */
+    .mobile-nav-btn.back-btn::before {
+        content: "←";
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    
+    /* Убираем все псевдоэлементы для других кнопок */
     .mobile-nav-btn.home-btn::before,
     .mobile-nav-btn.dictionary-btn::before,
     .mobile-nav-btn.account-btn::before {
-        font-size: 1.2rem;
-        position: static;
-        margin-right: 0.5rem;
+        content: none;
+        margin-right: 0;
     }
 }
 
@@ -1794,15 +1772,15 @@ header {
             <div class="logo-section">
                 <div class="account-section">
                      <a href="/page5/" class="dictionary-btn">   
-                          Словарь
+                         Словарь
                     </a>
                     {% if user.is_authenticated %}
                         <a href="{% url 'profile' %}" class="account-btn">
-                             Личный кабинет
+                            Личный кабинет
                         </a>
                     {% else %}
                         <a href="/login/" class="account-btn">
-                             Войти в аккаунт
+                            Войти в аккаунт
                         </a>
                     {% endif %}
                 </div>
@@ -1828,8 +1806,8 @@ header {
                 
                 {% if request.resolver_match.url_name != 'index' %}
                 <div class="mobile-button-row">
-                    <a href="javascript:history.back()" class="mobile-nav-btn back-btn">← Назад</a>
-                    <a href="{% url 'index' %}" class="mobile-nav-btn home-btn"> Главная</a>
+                    <a href="javascript:history.back()" class="mobile-nav-btn back-btn">Назад</a>
+                    <a href="{% url 'index' %}" class="mobile-nav-btn home-btn">Главная</a>
                 </div>
                 {% endif %}
             </div>
@@ -1844,31 +1822,5 @@ header {
     <footer>
         <p>&copy; 2025 EasyAid. Все права защищены.</p>
     </footer>
-
-    <script>
-        // Скрипт для адаптивного переключения навигации
-        document.addEventListener('DOMContentLoaded', function() {
-            function updateNavigation() {
-                const mobileNav = document.querySelector('.mobile-vertical-nav');
-                const desktopNav = document.querySelector('.nav-buttons, .account-section');
-                
-                if (window.innerWidth <= 480) {
-                    // Показываем мобильную навигацию
-                    if (mobileNav) mobileNav.style.display = 'flex';
-                    // Скрываем десктопную
-                    if (desktopNav) desktopNav.style.display = 'none';
-                } else {
-                    // Показываем десктопную навигацию
-                    if (desktopNav) desktopNav.style.display = 'flex';
-                    // Скрываем мобильную
-                    if (mobileNav) mobileNav.style.display = 'none';
-                }
-            }
-            
-            // Проверяем при загрузке и изменении размера окна
-            updateNavigation();
-            window.addEventListener('resize', updateNavigation);
-        });
-    </script>
 </body>
 </html>
