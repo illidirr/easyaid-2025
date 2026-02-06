@@ -3,6 +3,7 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
+{% with current_part=request.GET.part|default:1|add:0 %}
 <div class="page-content">
     <h1>{{ title }}</h1>
 
@@ -13,7 +14,7 @@
         </div>
         <div class="page-navigation">
             {% if current_part > 1 %}
-                <a href="{% url 'page4_part' part_num=current_part|add:'-1' %}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
+                <a href="?part={{ current_part|add:'-1' }}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
             {% endif %}
             
             <div class="page-numbers">
@@ -21,13 +22,13 @@
                     {% if forloop.counter == current_part %}
                         <span class="page-number active">{{ forloop.counter }}</span>
                     {% else %}
-                        <a href="{% url 'page4_part' part_num=forloop.counter %}" class="page-number">{{ forloop.counter }}</a>
+                        <a href="?part={{ forloop.counter }}" class="page-number">{{ forloop.counter }}</a>
                     {% endif %}
                 {% endfor %}
             </div>
             
             {% if current_part < 2 %}
-                <a href="{% url 'page4_part' part_num=current_part|add:'1' %}" class="page-nav-btn next-btn">Следующая часть →</a>
+                <a href="?part={{ current_part|add:'1' }}" class="page-nav-btn next-btn">Следующая часть →</a>
             {% endif %}
         </div>
     </div>
@@ -186,7 +187,7 @@
     <!-- Нижняя навигация -->
     <div class="page-navigation-bottom">
         {% if current_part > 1 %}
-            <a href="{% url 'page4_part' part_num=current_part|add:'-1' %}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
+            <a href="?part={{ current_part|add:'-1' }}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
         {% endif %}
         
         <div class="page-info-bottom">
@@ -194,7 +195,7 @@
         </div>
         
         {% if current_part < 2 %}
-            <a href="{% url 'page4_part' part_num=current_part|add:'1' %}" class="page-nav-btn next-btn">Следующая часть →</a>
+            <a href="?part={{ current_part|add:'1' }}" class="page-nav-btn next-btn">Следующая часть →</a>
         {% else %}
             <!-- КНОПКА ПЕРЕХОДА НА ТЕСТ (только на последней странице) -->
             <div class="test-promo-section">
@@ -208,9 +209,10 @@
     </div>
 
 </div>
+{% endwith %}
 
 <style>
-    /* Стили для пагинации (те же, что и для page3) */
+    /* Стили для пагинации */
     .page-indicator {
         background: rgba(206, 229, 214, 0.3);
         padding: 1.5rem;
