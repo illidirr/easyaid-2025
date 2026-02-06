@@ -3,40 +3,29 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-{% with current_part=request.GET.part|default:1|add:0 %}
 <div class="page-content">
     <h1>{{ title }}</h1>
 
     <!-- Индикатор страницы -->
     <div class="page-indicator">
         <div class="page-info">
-            Часть {{ current_part }} из 2
+            Часть 1 из 2
         </div>
         <div class="page-navigation">
-            {% if current_part > 1 %}
-                <a href="?part={{ current_part|add:'-1' }}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
-            {% endif %}
+            <a href="#" class="page-nav-btn prev-btn" onclick="showPrevPart(event)">← Предыдущая часть</a>
             
             <div class="page-numbers">
-                {% for i in "12" %}
-                    {% if forloop.counter == current_part %}
-                        <span class="page-number active">{{ forloop.counter }}</span>
-                    {% else %}
-                        <a href="?part={{ forloop.counter }}" class="page-number">{{ forloop.counter }}</a>
-                    {% endif %}
-                {% endfor %}
+                <span class="page-number active" onclick="showPart(1)">1</span>
+                <a href="#" class="page-number" onclick="showPart(2, event)">2</a>
             </div>
             
-            {% if current_part < 2 %}
-                <a href="?part={{ current_part|add:'1' }}" class="page-nav-btn next-btn">Следующая часть →</a>
-            {% endif %}
+            <a href="#" class="page-nav-btn next-btn" onclick="showNextPart(event)">Следующая часть →</a>
         </div>
     </div>
 
     <div class="text-content">
-        <div class="content-section">
-            {% if current_part == 1 %}
-            <!-- Часть 1 -->
+        <!-- Часть 1 -->
+        <div class="content-section part" data-part="1">
             <p class="intro-text">
                 Каждый день мы выходим в интернет: для работы, общения, покупок и развлечений.
                 Но сеть таит в себе и риски. Знание основных правил цифровой гигиены — это не роскошь, а необходимость.
@@ -123,9 +112,10 @@
                     <li><strong>Что дает:</strong> VPN скрывает ваш реальный IP-адрес и шифрует весь интернет-трафик, не давая хакерам в той же кафешке перехватить ваши пароли.</li>
                 </ul>
             </div>
+        </div>
 
-            {% elif current_part == 2 %}
-            <!-- Часть 2 -->
+        <!-- Часть 2 (скрыта по умолчанию) -->
+        <div class="content-section part" data-part="2" style="display: none;">
             <div class="info-block">
                 <h2>6. Защита в социальных сетях: приватность — это ключ</h2>
 
@@ -152,7 +142,7 @@
 
                 <h3>Как безопасно пользоваться?</h3>
                 <ul>
-                    <li><strong>Не делайте:</strong> Не входите в интернет-банк, не совершайте покупки онлайн.</li>
+                    <li><strong>Не делайте:</strong> Не входите в интернет-банк, не совершаете покупки онлайн.</li>
                     <li><strong>Можно делать:</strong> Читать новости, смотреть видео.</li>
                     <li><strong>Идеальное решение:</strong> Для любых важных операций (банкинг, почта) используйте VPN.</li>
                 </ul>
@@ -180,36 +170,30 @@
                     Безопасность в интернете — это не сложно. Это совокупность привычек: быть внимательным, использовать надежные пароли с 2FA, не доверять подозрительным письмам и обновлять софт. Следуя этим правилам, вы создадите для мошенников непреодолимый барьер.
                 </p>
             </div>
-            {% endif %}
         </div>
     </div>
 
     <!-- Нижняя навигация -->
     <div class="page-navigation-bottom">
-        {% if current_part > 1 %}
-            <a href="?part={{ current_part|add:'-1' }}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
-        {% endif %}
+        <a href="#" class="page-nav-btn prev-btn" onclick="showPrevPart(event)">← Предыдущая часть</a>
         
         <div class="page-info-bottom">
-            Часть {{ current_part }} из 2
+            Часть 1 из 2
         </div>
         
-        {% if current_part < 2 %}
-            <a href="?part={{ current_part|add:'1' }}" class="page-nav-btn next-btn">Следующая часть →</a>
-        {% else %}
-            <!-- КНОПКА ПЕРЕХОДА НА ТЕСТ (только на последней странице) -->
-            <div class="test-promo-section">
-                <div class="test-promo">
-                    <h3> Проверьте свои знания!</h3>
-                    <p>После изучения материалов пройдите тест, чтобы закрепить знания о безопасном пользовании интернетом</p>
-                    <a href="{% url 'test_internet' %}" class="test-promo-btn">Пройти тест</a>
-                </div>
-            </div>
-        {% endif %}
+        <a href="#" class="page-nav-btn next-btn" onclick="showNextPart(event)">Следующая часть →</a>
+    </div>
+
+    <!-- Тестовый промо-блок (только на последней странице) -->
+    <div class="test-promo-section" id="test-promo" style="display: none;">
+        <div class="test-promo">
+            <h3> Проверьте свои знания!</h3>
+            <p>После изучения материалов пройдите тест, чтобы закрепить знания о безопасном пользовании интернетом</p>
+            <a href="{% url 'test_internet' %}" class="test-promo-btn">Пройти тест</a>
+        </div>
     </div>
 
 </div>
-{% endwith %}
 
 <style>
     /* Стили для пагинации */
@@ -246,6 +230,9 @@
         transition: all 0.3s ease;
         font-size: 1.6rem;
         white-space: nowrap;
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
     }
     
     .page-nav-btn:hover {
@@ -271,6 +258,7 @@
         text-decoration: none;
         font-size: 1.6rem;
         transition: all 0.3s ease;
+        cursor: pointer;
     }
     
     .page-number.active {
@@ -326,4 +314,75 @@
         }
     }
 </style>
+
+<script>
+    let currentPart = 1;
+    const totalParts = 2;
+    
+    function showPart(partNum, event = null) {
+        if (event) event.preventDefault();
+        
+        // Скрываем все части
+        document.querySelectorAll('.part').forEach(part => {
+            part.style.display = 'none';
+        });
+        
+        // Показываем выбранную часть
+        document.querySelector(`.part[data-part="${partNum}"]`).style.display = 'block';
+        
+        // Обновляем текущую часть
+        currentPart = partNum;
+        
+        // Обновляем навигацию
+        updateNavigation();
+    }
+    
+    function showPrevPart(event) {
+        event.preventDefault();
+        if (currentPart > 1) {
+            showPart(currentPart - 1);
+        }
+    }
+    
+    function showNextPart(event) {
+        event.preventDefault();
+        if (currentPart < totalParts) {
+            showPart(currentPart + 1);
+        }
+    }
+    
+    function updateNavigation() {
+        // Обновляем информацию о странице
+        document.querySelector('.page-info').textContent = `Часть ${currentPart} из ${totalParts}`;
+        document.querySelector('.page-info-bottom').textContent = `Часть ${currentPart} из ${totalParts}`;
+        
+        // Обновляем кнопки навигации
+        document.querySelector('.prev-btn').style.display = currentPart > 1 ? 'block' : 'none';
+        document.querySelector('.next-btn').style.display = currentPart < totalParts ? 'block' : 'none';
+        
+        // Обновляем активный номер страницы
+        document.querySelectorAll('.page-number').forEach((num, index) => {
+            if (index + 1 === currentPart) {
+                num.classList.add('active');
+                num.removeAttribute('href');
+                num.onclick = null;
+            } else {
+                num.classList.remove('active');
+                num.setAttribute('href', '#');
+                num.onclick = (e) => showPart(index + 1, e);
+            }
+        });
+        
+        // Показываем/скрываем тестовый промо-блок
+        document.getElementById('test-promo').style.display = currentPart === totalParts ? 'block' : 'none';
+        
+        // Прокрутка к верху страницы
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', function() {
+        showPart(1);
+    });
+</script>
 {% endblock %}
