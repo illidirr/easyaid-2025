@@ -1474,7 +1474,7 @@ header {
     font-size: 1.6rem;
 }
 
-/* АДАПТИВНОЕ РАЗМЕЩЕНИЕ КНОПОК */
+/* ===== ГОРИЗОНТАЛЬНЫЕ ЭКРАНЫ ===== */
 
 /* Десктопы (1024px и выше) - стандартное расположение */
 @media (min-width: 1024px) {
@@ -1484,15 +1484,16 @@ header {
         align-items: center;
     }
     
-    .logo-section {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
+    .logo {
+        text-align: left;
+        margin-right: auto;
     }
     
     .nav-buttons {
         display: flex;
         gap: 1.5rem;
+        margin-left: auto;
+        margin-right: 2rem;
     }
     
     .account-section {
@@ -1501,33 +1502,50 @@ header {
     }
 }
 
-/* Планшеты (768px - 1023px) - горизонтальное расположение */
+/* Планшеты горизонтальные (768px - 1023px) - лого по центру, кнопки симметрично */
 @media (max-width: 1023px) and (min-width: 769px) {
     nav {
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
-        padding: 1rem;
+        padding: 1rem 2rem;
     }
     
-    .logo-section {
+    .logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .logo h1 {
+        font-size: 2.2rem;
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    /* Основной контейнер для кнопок */
+    .horizontal-buttons-container {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 1rem;
     }
     
-    .nav-buttons {
-        width: 100%;
+    /* Левая группа кнопок (Словарь и Войти/Кабинет) */
+    .left-button-group {
         display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        order: 3;
+        gap: 1rem;
+        justify-content: flex-start;
+        flex: 1;
     }
     
-    .account-section {
+    /* Правая группа кнопок (Назад и Главная) */
+    .right-button-group {
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
+        justify-content: flex-end;
+        flex: 1;
     }
     
     .nav-buttons .btn,
@@ -1538,10 +1556,16 @@ header {
         min-width: 140px !important;
         min-height: 55px !important;
     }
+    
+    /* Скрываем стандартные контейнеры */
+    .nav-buttons,
+    .account-section {
+        display: none !important;
+    }
 }
 
-/* Мобильные телефоны (горизонтальные, 481px - 768px) */
-@media (max-width: 768px) and (min-width: 481px) {
+/* Мобильные телефоны горизонтальные (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) and (orientation: landscape) {
     nav {
         flex-direction: column;
         align-items: center;
@@ -1557,43 +1581,33 @@ header {
     
     .logo h1 {
         font-size: 2rem;
+        text-align: center;
+        margin: 0 auto;
     }
     
-    /* Контейнер для всех 4 кнопок */
-    .mobile-nav-container {
+    /* Основной контейнер для кнопок */
+    .horizontal-buttons-container {
         width: 100%;
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
         gap: 1rem;
     }
     
-    /* Первый ряд кнопок */
-    .mobile-button-row {
+    /* Левая группа кнопок (Словарь и Войти/Кабинет) */
+    .left-button-group {
         display: flex;
-        justify-content: center;
         gap: 1rem;
-        width: 100%;
+        justify-content: flex-start;
+        flex: 1;
     }
     
-    /* Второй ряд кнопок */
-    .mobile-button-row:nth-child(2) {
-        margin-top: 0.5rem;
-    }
-    
-    .nav-buttons {
-        width: 100%;
+    /* Правая группа кнопок (Назад и Главная) */
+    .right-button-group {
         display: flex;
-        justify-content: center;
         gap: 1rem;
-        margin: 0;
-    }
-    
-    .account-section {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        width: 100%;
-        margin: 0;
+        justify-content: flex-end;
+        flex: 1;
     }
     
     .nav-buttons .btn,
@@ -1601,15 +1615,21 @@ header {
     .account-section .account-btn {
         padding: 0.9rem 1.8rem !important;
         font-size: 1.1rem !important;
-        min-width: 140px !important;
+        min-width: 130px !important;
         min-height: 50px !important;
-        flex: 1;
-        max-width: 180px;
+    }
+    
+    /* Скрываем стандартные контейнеры */
+    .nav-buttons,
+    .account-section {
+        display: none !important;
     }
 }
 
-/* Мобильные телефоны (вертикальные, до 480px) - ВЕРТИКАЛЬНОЕ РАСПОЛОЖЕНИЕ */
-@media (max-width: 480px) {
+/* ===== ВЕРТИКАЛЬНЫЕ ЭКРАНЫ ===== */
+
+/* Мобильные телефоны вертикальные (до 480px) */
+@media (max-width: 480px) and (orientation: portrait) {
     nav {
         flex-direction: column;
         align-items: center;
@@ -1627,12 +1647,14 @@ header {
         font-size: 1.8rem;
         color: rgb(48,123,142);
         margin: 0;
+        text-align: center;
     }
     
-    /* Скрываем стандартные контейнеры */
+    /* Скрываем все горизонтальные контейнеры */
     .nav-buttons,
-    .account-section {
-        display: none;
+    .account-section,
+    .horizontal-buttons-container {
+        display: none !important;
     }
     
     /* Создаем вертикальный контейнер для всех кнопок */
@@ -1719,7 +1741,7 @@ header {
 }
 
 /* Очень маленькие экраны (до 360px) */
-@media (max-width: 360px) {
+@media (max-width: 360px) and (orientation: portrait) {
     .logo h1 {
         font-size: 1.5rem;
     }
@@ -1738,7 +1760,7 @@ header {
 }
 
 /* Для очень маленьких экранов с переносом текста */
-@media (max-width: 320px) {
+@media (max-width: 320px) and (orientation: portrait) {
     .mobile-nav-btn {
         font-size: 0.9rem !important;
         min-width: 110px !important;
@@ -1753,27 +1775,50 @@ header {
     }
 }
 
-/* Скрываем десктопные кнопки на мобильных */
-@media (max-width: 480px) {
-    .nav-buttons,
-    .account-section {
+/* ===== УПРАВЛЕНИЕ ОТОБРАЖЕНИЕМ ===== */
+
+/* Показываем десктопную навигацию для больших экранов */
+@media (min-width: 769px) {
+    .mobile-vertical-nav {
         display: none !important;
     }
     
-    .mobile-vertical-nav {
+    .horizontal-buttons-container {
+        display: flex !important;
+    }
+    
+    .nav-buttons,
+    .account-section {
         display: flex !important;
     }
 }
 
-/* Показываем десктопные кнопки на больших экранах */
-@media (min-width: 481px) {
+/* Для горизонтальных экранов показываем симметричную навигацию */
+@media (max-width: 1023px) and (min-width: 481px) {
     .mobile-vertical-nav {
         display: none !important;
     }
     
+    .horizontal-buttons-container {
+        display: flex !important;
+    }
+    
     .nav-buttons,
     .account-section {
+        display: none !important;
+    }
+}
+
+/* Для вертикальных экранов показываем вертикальную навигацию */
+@media (max-width: 480px) and (orientation: portrait) {
+    .mobile-vertical-nav {
         display: flex !important;
+    }
+    
+    .horizontal-buttons-container,
+    .nav-buttons,
+    .account-section {
+        display: none !important;
     }
 }
     </style>
@@ -1790,22 +1835,33 @@ header {
                 <h1>EasyAid</h1>
             </div>
             
-            <!-- Десктопная навигация (для больших экранов) -->
-            <div class="logo-section">
-                <div class="account-section">
-                     <a href="/page5/" class="dictionary-btn">   
-                          Словарь
-                    </a>
+            <!-- Горизонтальная симметричная навигация для планшетов и горизонтальных телефонов -->
+            <div class="horizontal-buttons-container">
+                <div class="left-button-group">
+                    <a href="/page5/" class="dictionary-btn"> Словарь</a>
                     {% if user.is_authenticated %}
-                        <a href="{% url 'profile' %}" class="account-btn">
-                             Личный кабинет
-                        </a>
+                        <a href="{% url 'profile' %}" class="account-btn"> Личный кабинет</a>
                     {% else %}
-                        <a href="/login/" class="account-btn">
-                             Войти в аккаунт
-                        </a>
+                        <a href="/login/" class="account-btn"> Войти в аккаунт</a>
                     {% endif %}
                 </div>
+                
+                <div class="right-button-group">
+                    {% if request.resolver_match.url_name != 'index' %}
+                    <a href="javascript:history.back()" class="btn back-btn">← Назад</a>
+                    <a href="{% url 'index' %}" class="btn home-btn"> Главная</a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Десктопная навигация (для больших экранов) -->
+            <div class="account-section">
+                <a href="/page5/" class="dictionary-btn"> Словарь</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="account-btn"> Личный кабинет</a>
+                {% else %}
+                    <a href="/login/" class="account-btn"> Войти в аккаунт</a>
+                {% endif %}
             </div>
 
             <div class="nav-buttons">
@@ -1815,7 +1871,7 @@ header {
                 {% endif %}
             </div>
             
-            <!-- Мобильная навигация (для вертикальных экранов) -->
+            <!-- Мобильная вертикальная навигация (для вертикальных телефонов) -->
             <div class="mobile-vertical-nav">
                 <div class="mobile-button-row">
                     <a href="/page5/" class="mobile-nav-btn dictionary-btn"> Словарь</a>
@@ -1849,25 +1905,32 @@ header {
         // Скрипт для адаптивного переключения навигации
         document.addEventListener('DOMContentLoaded', function() {
             function updateNavigation() {
-                const mobileNav = document.querySelector('.mobile-vertical-nav');
+                const mobileVerticalNav = document.querySelector('.mobile-vertical-nav');
+                const horizontalContainer = document.querySelector('.horizontal-buttons-container');
                 const desktopNav = document.querySelector('.nav-buttons, .account-section');
                 
-                if (window.innerWidth <= 480) {
-                    // Показываем мобильную навигацию
-                    if (mobileNav) mobileNav.style.display = 'flex';
-                    // Скрываем десктопную
+                if (window.innerWidth <= 480 && window.matchMedia("(orientation: portrait)").matches) {
+                    // Вертикальные телефоны - показываем вертикальную навигацию
+                    if (mobileVerticalNav) mobileVerticalNav.style.display = 'flex';
+                    if (horizontalContainer) horizontalContainer.style.display = 'none';
+                    if (desktopNav) desktopNav.style.display = 'none';
+                } else if (window.innerWidth <= 1023 && window.innerWidth >= 481) {
+                    // Планшеты и горизонтальные телефоны - показываем симметричную навигацию
+                    if (mobileVerticalNav) mobileVerticalNav.style.display = 'none';
+                    if (horizontalContainer) horizontalContainer.style.display = 'flex';
                     if (desktopNav) desktopNav.style.display = 'none';
                 } else {
-                    // Показываем десктопную навигацию
+                    // Десктопы - показываем стандартную навигацию
+                    if (mobileVerticalNav) mobileVerticalNav.style.display = 'none';
+                    if (horizontalContainer) horizontalContainer.style.display = 'none';
                     if (desktopNav) desktopNav.style.display = 'flex';
-                    // Скрываем мобильную
-                    if (mobileNav) mobileNav.style.display = 'none';
                 }
             }
             
-            // Проверяем при загрузке и изменении размера окна
+            // Проверяем при загрузке и изменении размера/ориентации окна
             updateNavigation();
             window.addEventListener('resize', updateNavigation);
+            window.addEventListener('orientationchange', updateNavigation);
         });
     </script>
 </body>
