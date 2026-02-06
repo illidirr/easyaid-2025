@@ -9,33 +9,24 @@
     <!-- Индикатор страницы -->
     <div class="page-indicator">
         <div class="page-info">
-            Часть {{ current_part }} из 3
+            Часть 1 из 3
         </div>
         <div class="page-navigation">
-            {% if current_part > 1 %}
-                <a href="{% url 'page3' %}?part={{ current_part|add:"-1" }}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
-            {% endif %}
+            <a href="#" class="page-nav-btn prev-btn" onclick="showPrevPart(event)">← Предыдущая часть</a>
             
             <div class="page-numbers">
-                {% for i in "123" %}
-                    {% if forloop.counter == current_part %}
-                        <span class="page-number active">{{ forloop.counter }}</span>
-                    {% else %}
-                        <a href="{% url 'page3_part' part_num=forloop.counter %}" class="page-number">{{ forloop.counter }}</a>
-                    {% endif %}
-                {% endfor %}
+                <span class="page-number active" onclick="showPart(1)">1</span>
+                <a href="#" class="page-number" onclick="showPart(2, event)">2</a>
+                <a href="#" class="page-number" onclick="showPart(3, event)">3</a>
             </div>
             
-            {% if current_part < 3 %}
-                <a href="{% url 'page3' %}?part={{ current_part|add:"-1" }}" class="page-nav-btn next-btn">Следующая часть →</a>
-            {% endif %}
+            <a href="#" class="page-nav-btn next-btn" onclick="showNextPart(event)">Следующая часть →</a>
         </div>
     </div>
 
     <div class="text-content">
-        <div class="content-section">
-            {% if current_part == 1 %}
-            <!-- Часть 1 -->
+        <!-- Часть 1 -->
+        <div class="content-section part" data-part="1">
             <p class="intro-text">
                 Интернет-мошенничество — это масштабная и постоянно развивающаяся угроза. Злоумышленники ежедневно придумывают новые уловки, но большинство из них основано на старых, проверенных схемах. Знание этих схем — ваша лучшая защита.
             </p>
@@ -96,9 +87,10 @@
                     Помните: легальные организаторы лотерей никогда не требуют предоплату за получение приза.
                 </p>
             </div>
+        </div>
 
-            {% elif current_part == 2 %}
-            <!-- Часть 2 -->
+        <!-- Часть 2 (скрыта по умолчанию) -->
+        <div class="content-section part" data-part="2" style="display: none;">
             <div class="info-block">
                 <h2>4. Романтические мошенничества</h2>
 
@@ -148,9 +140,10 @@
                     <li>Никогда не предоставляйте удаленный доступ к своему компьютеру незнакомым людям.</li>
                 </ul>
             </div>
+        </div>
 
-            {% elif current_part == 3 %}
-            <!-- Часть 3 -->
+        <!-- Часть 3 (скрыта по умолчанию) -->
+        <div class="content-section part" data-part="3" style="display: none;">
             <div class="info-block">
                 <h2>7. Мошенничество на сайтах объявлений (с арендой жилья)</h2>
 
@@ -219,32 +212,27 @@
                     Здравый скептицизм — ваш лучший друг. Если предложение кажется слишком хорошим, чтобы быть правдой, или кто-то торопит вас с деньгами под предлогом срочности, — это почти наверняка мошенничество. Останавливайтесь, проверяйте информацию и не поддавайтесь на давление.
                 </p>
             </div>
-            {% endif %}
         </div>
     </div>
 
     <!-- Нижняя навигация -->
     <div class="page-navigation-bottom">
-        {% if current_part > 1 %}
-            <a href="{% url 'page3' %}?part={{ current_part|add:"-1" }}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
-        {% endif %}
+        <a href="#" class="page-nav-btn prev-btn" onclick="showPrevPart(event)">← Предыдущая часть</a>
         
         <div class="page-info-bottom">
-            Часть {{ current_part }} из 3
+            Часть 1 из 3
         </div>
         
-        {% if current_part < 3 %}
-            <a href="{% url 'page3' %}?part={{ current_part|add:"-1" }}" class="page-nav-btn next-btn">Следующая часть →</a>
-        {% else %}
-            <!-- КНОПКА ПЕРЕХОДА НА ТЕСТ (только на последней странице) -->
-            <div class="test-promo-section">
-                <div class="test-promo">
-                    <h3> Проверьте свои знания!</h3>
-                    <p>После изучения материалов пройдите тест, чтобы закрепить знания о распознавании мошенников</p>
-                    <a href="{% url 'test' %}" class="test-promo-btn">Пройти тест</a>
-                </div>
-            </div>
-        {% endif %}
+        <a href="#" class="page-nav-btn next-btn" onclick="showNextPart(event)">Следующая часть →</a>
+    </div>
+
+    <!-- Тестовый промо-блок (только на последней странице) -->
+    <div class="test-promo-section" id="test-promo" style="display: none;">
+        <div class="test-promo">
+            <h3> Проверьте свои знания!</h3>
+            <p>После изучения материалов пройдите тест, чтобы закрепить знания о распознавании мошенников</p>
+            <a href="{% url 'test' %}" class="test-promo-btn">Пройти тест</a>
+        </div>
     </div>
 
 </div>
@@ -284,6 +272,9 @@
         transition: all 0.3s ease;
         font-size: 1.6rem;
         white-space: nowrap;
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
     }
     
     .page-nav-btn:hover {
@@ -309,6 +300,7 @@
         text-decoration: none;
         font-size: 1.6rem;
         transition: all 0.3s ease;
+        cursor: pointer;
     }
     
     .page-number.active {
@@ -336,6 +328,65 @@
         font-weight: bold;
     }
     
+    /* Дополнительные стили для этой страницы */
+    .info-block {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: rgba(206, 229, 214, 0.3);
+        border-radius: 15px;
+        border: 2px solid rgba(206, 229, 214, 0.7);
+        border-left: 5px solid rgb(48, 123, 142);
+    }
+
+    .warning-text {
+        background: rgba(255, 87, 87, 0.1);
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid #ff5757;
+        margin: 1rem 0;
+        color: #d32f2f;
+        font-weight: bold;
+    }
+
+    .important-text {
+        background: rgba(76, 175, 80, 0.1);
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid #4CAF50;
+        margin: 1rem 0;
+        color: #2e7d32;
+        font-weight: bold;
+    }
+
+    .italic-text {
+        font-style: italic;
+        color: #666;
+        padding: 0.5rem 1rem;
+        background: rgba(0, 0, 0, 0.03);
+        border-radius: 6px;
+    }
+
+    .conclusion-block {
+        padding: 3.5rem;
+        background: linear-gradient(135deg, rgb(206, 229, 214), rgb(169, 211, 197));
+        border-radius: 25px;
+        text-align: center;
+        margin-top: 4rem;
+    }
+
+    .conclusion-block h2 {
+        color: rgb(54, 107, 43);
+        margin-bottom: 2rem;
+        font-size: 4.5rem;
+        line-height: 1.2;
+    }
+
+    .conclusion-text {
+        font-size: 3.5rem;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+
     /* Адаптация для мобильных */
     @media (max-width: 768px) {
         .page-navigation {
@@ -362,6 +413,112 @@
         .page-info, .page-info-bottom {
             font-size: 1.6rem;
         }
+        
+        .info-block {
+            padding: 1.2rem;
+        }
+        
+        .conclusion-block {
+            padding: 1.5rem;
+        }
+        
+        .conclusion-block h2 {
+            font-size: 1.6rem;
+        }
+        
+        .conclusion-text {
+            font-size: 1.2rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .page-nav-btn {
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .page-number {
+            width: 35px;
+            height: 35px;
+            font-size: 1.4rem;
+        }
     }
 </style>
+
+<script>
+    let currentPart = 1;
+    const totalParts = 3;
+    
+    function showPart(partNum, event = null) {
+        if (event) event.preventDefault();
+        
+        // Скрываем все части
+        document.querySelectorAll('.part').forEach(part => {
+            part.style.display = 'none';
+        });
+        
+        // Показываем выбранную часть
+        document.querySelector(`.part[data-part="${partNum}"]`).style.display = 'block';
+        
+        // Обновляем текущую часть
+        currentPart = partNum;
+        
+        // Обновляем навигацию
+        updateNavigation();
+    }
+    
+    function showPrevPart(event) {
+        event.preventDefault();
+        if (currentPart > 1) {
+            showPart(currentPart - 1);
+        }
+    }
+    
+    function showNextPart(event) {
+        event.preventDefault();
+        if (currentPart < totalParts) {
+            showPart(currentPart + 1);
+        }
+    }
+    
+    function updateNavigation() {
+        // Обновляем информацию о странице
+        document.querySelector('.page-info').textContent = `Часть ${currentPart} из ${totalParts}`;
+        document.querySelector('.page-info-bottom').textContent = `Часть ${currentPart} из ${totalParts}`;
+        
+        // Обновляем кнопки навигации
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        if (prevBtn) prevBtn.style.display = currentPart > 1 ? 'block' : 'none';
+        if (nextBtn) nextBtn.style.display = currentPart < totalParts ? 'block' : 'none';
+        
+        // Обновляем активный номер страницы
+        document.querySelectorAll('.page-number').forEach((num, index) => {
+            if (index + 1 === currentPart) {
+                num.classList.add('active');
+                num.removeAttribute('href');
+                num.onclick = null;
+            } else {
+                num.classList.remove('active');
+                num.setAttribute('href', '#');
+                num.onclick = (e) => showPart(index + 1, e);
+            }
+        });
+        
+        // Показываем/скрываем тестовый промо-блок
+        const testPromo = document.getElementById('test-promo');
+        if (testPromo) {
+            testPromo.style.display = currentPart === totalParts ? 'block' : 'none';
+        }
+        
+        // Прокрутка к верху страницы
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', function() {
+        showPart(1);
+    });
+</script>
 {% endblock %}
