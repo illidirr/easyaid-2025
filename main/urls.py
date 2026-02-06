@@ -2,20 +2,21 @@ from django.urls import path, include
 from . import views
 from main import views
 urlpatterns = [
+    path('page3/', views.page3_part, {'part_num': 1}, name='page3'),
+    path('page3/part<int:part_num>/', views.page3_part, name='page3_part'),
+    path('page4/', views.page4_part, {'part_num': 1}, name='page4'),
+    path('page4/part<int:part_num>/', views.page4_part, name='page4_part'),
+    path('page5/', views.page5_part, {'part_num': 1}, name='page5'),
+    path('page5/part<int:part_num>/', views.page5_part, name='page5_part'),
     path('network-test/', views.network_test, name='network_test'),
     path('health/', views.health_check, name='health_check'),
-    # Основные страницы
     path('', views.index, name='index'),
     path('register/', views.register_view, name='register'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('profile/', views.profile_view, name='profile'),
-
-    # Группы материалов
     path('group1/', views.group1, name='group1'),
     path('group2/', views.group2, name='group2'),
-
-    # Страницы с материалами
     path('page5/', views.page5, name='page5'),
     path('page1/', views.page1, name='page1'),
     path('page2/', views.page2, name='page2'),
