@@ -13,7 +13,7 @@
         </div>
         <div class="page-navigation">
             {% if current_part > 1 %}
-                <a href="{% url 'page3_part' part_num=current_part|add:'-1' %}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
+                <a href="{% url 'page3' %}?part={{ current_part|add:"-1" }}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
             {% endif %}
             
             <div class="page-numbers">
@@ -27,7 +27,7 @@
             </div>
             
             {% if current_part < 3 %}
-                <a href="{% url 'page3_part' part_num=current_part|add:'1' %}" class="page-nav-btn next-btn">Следующая часть →</a>
+                <a href="{% url 'page3' %}?part={{ current_part|add:"-1" }}" class="page-nav-btn next-btn">Следующая часть →</a>
             {% endif %}
         </div>
     </div>
@@ -226,7 +226,7 @@
     <!-- Нижняя навигация -->
     <div class="page-navigation-bottom">
         {% if current_part > 1 %}
-            <a href="{% url 'page3_part' part_num=current_part|add:'-1' %}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
+            <a href="{% url 'page3' %}?part={{ current_part|add:"-1" }}" class="page-nav-btn prev-btn">← Предыдущая часть</a>
         {% endif %}
         
         <div class="page-info-bottom">
@@ -234,7 +234,7 @@
         </div>
         
         {% if current_part < 3 %}
-            <a href="{% url 'page3_part' part_num=current_part|add:'1' %}" class="page-nav-btn next-btn">Следующая часть →</a>
+            <a href="{% url 'page3' %}?part={{ current_part|add:"-1" }}" class="page-nav-btn next-btn">Следующая часть →</a>
         {% else %}
             <!-- КНОПКА ПЕРЕХОДА НА ТЕСТ (только на последней странице) -->
             <div class="test-promo-section">
