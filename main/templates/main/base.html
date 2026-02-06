@@ -53,7 +53,7 @@ nav {
 .back-btn, .home-btn, .dictionary-btn, .account-btn {
     padding: 0.8rem 2rem;
     background-color: rgb(206, 229, 214);
-    color: rgb(54, 107, 43);
+    color: rgb(48,123,142); /* Цвет как у лого */
     text-decoration: none;
     border-radius: 50px;
     transition: all 0.3s ease;
@@ -513,7 +513,7 @@ footer {
 .option {
     font-family: 'Lorenzo Sans Bold';
     background-color: rgb(206, 229, 214);
-    color: rgb(54, 107, 43);
+    color: rgb(48,123,142); /* Цвет как у лого */
     border: 2px solid rgb(54, 107, 43);
     font-weight: normal;
     display: flex;
@@ -1456,6 +1456,300 @@ header {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+/* ===== УВЕЛИЧЕННЫЕ КНОПКИ НАВИГАЦИИ И АДАПТИВНОЕ РАЗМЕЩЕНИЕ ===== */
+
+/* БОЛЬШИЕ КНОПКИ ДЛЯ ДЕСКТОПОВ */
+.nav-buttons .btn,
+.account-section .dictionary-btn,
+.account-section .account-btn {
+    padding: 1.2rem 2.5rem !important;
+    font-size: 1.4rem !important;
+    min-width: 160px !important;
+    min-height: 60px !important;
+    border-radius: 60px !important;
+    color: rgb(48,123,142) !important; /* Цвет как у лого */
+    font-weight: bold;
+}
+
+/* Иконки для кнопок */
+.back-btn {
+    position: relative;
+    padding-left: 3rem !important;
+}
+
+.back-btn::before {
+    content: "←";
+    position: absolute;
+    left: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.home-btn {
+    position: relative;
+    padding-left: 3rem !important;
+}
+
+.home-btn::before {
+    content: "🏠";
+    position: absolute;
+    left: 1.5rem;
+    font-size: 1.6rem;
+}
+
+.dictionary-btn {
+    position: relative;
+    padding-left: 3rem !important;
+}
+
+.dictionary-btn::before {
+    content: "📚";
+    position: absolute;
+    left: 1.5rem;
+    font-size: 1.6rem;
+}
+
+.account-btn {
+    position: relative;
+    padding-left: 3rem !important;
+}
+
+.account-btn::before {
+    content: "🔑";
+    position: absolute;
+    left: 1.5rem;
+    font-size: 1.6rem;
+}
+
+/* АДАПТИВНОЕ РАЗМЕЩЕНИЕ КНОПОК */
+
+/* Десктопы (1024px и выше) */
+@media (min-width: 1024px) {
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+    
+    .nav-buttons {
+        display: flex;
+        gap: 1.5rem;
+    }
+    
+    .account-section {
+        display: flex;
+        gap: 1.5rem;
+    }
+}
+
+/* Планшеты (768px - 1023px) */
+@media (max-width: 1023px) and (min-width: 769px) {
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    .logo-section {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+    
+    .nav-buttons {
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .account-section {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .nav-buttons .btn,
+    .account-section .dictionary-btn,
+    .account-section .account-btn {
+        padding: 1rem 2rem !important;
+        font-size: 1.2rem !important;
+        min-width: 140px !important;
+        min-height: 55px !important;
+    }
+}
+
+/* Мобильные телефоны (горизонтальные, 480px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .logo-section {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0;
+    }
+    
+    .nav-buttons {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+    
+    .account-section {
+        display: flex;
+        gap: 1rem;
+        margin-left: auto;
+    }
+    
+    .nav-buttons .btn,
+    .account-section .dictionary-btn,
+    .account-section .account-btn {
+        padding: 0.9rem 1.8rem !important;
+        font-size: 1.1rem !important;
+        min-width: 130px !important;
+        min-height: 50px !important;
+    }
+    
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Мобильные телефоны (вертикальные, до 480px) */
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .logo-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .logo {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .account-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .nav-buttons {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0;
+    }
+    
+    /* Уменьшаем кнопки для маленьких экранов */
+    .nav-buttons .btn,
+    .account-section .dictionary-btn,
+    .account-section .account-btn {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 1rem !important;
+        min-width: 120px !important;
+        min-height: 45px !important;
+        border-radius: 50px !important;
+    }
+    
+    /* Корректируем позиционирование иконок */
+    .back-btn::before,
+    .home-btn::before,
+    .dictionary-btn::before,
+    .account-btn::before {
+        left: 1rem;
+        font-size: 1.2rem;
+    }
+    
+    .back-btn,
+    .home-btn,
+    .dictionary-btn,
+    .account-btn {
+        padding-left: 2.5rem !important;
+    }
+    
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+    .nav-buttons .btn,
+    .account-section .dictionary-btn,
+    .account-section .account-btn {
+        padding: 0.7rem 1.2rem !important;
+        font-size: 0.9rem !important;
+        min-width: 110px !important;
+        min-height: 40px !important;
+    }
+    
+    .back-btn::before,
+    .home-btn::before,
+    .dictionary-btn::before,
+    .account-btn::before {
+        left: 0.8rem;
+        font-size: 1rem;
+    }
+    
+    .back-btn,
+    .home-btn,
+    .dictionary-btn,
+    .account-btn {
+        padding-left: 2.2rem !important;
+    }
+    
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    .nav-buttons,
+    .account-section {
+        gap: 0.3rem;
+    }
+}
+
+/* Обеспечиваем перенос текста на очень маленьких кнопках */
+@media (max-width: 320px) {
+    .nav-buttons .btn,
+    .account-section .dictionary-btn,
+    .account-section .account-btn {
+        font-size: 0.85rem !important;
+        white-space: normal;
+        line-height: 1.2;
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+    }
 }
     </style>
 
