@@ -259,7 +259,7 @@ def page3_part(request, part_num=1):
 
 def page4_part(request, part_num=1):
     return render(request, 'main/page4.html', {
-        'title': 'Цифровая гигиена',
+        'title': 'Как безопасно пользаться интернетом?',
         'current_part': part_num
     })
 
