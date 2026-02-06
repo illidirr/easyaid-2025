@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import RegistrationForm, LoginForm
 from .models import TestResult, UserProfile, Video
+import socket
+import datetime
 
 def index(request):
     """Главная страница - использует простой шаблон"""
@@ -248,19 +250,18 @@ def health_check(request):
 
 def simple_test(request):
     return HttpResponse("Django is working!", status=200)
+    
 def page3_part(request, part_num=1):
     return render(request, 'main/page3.html', {
         'title': 'Как не стать жертвой мошенничества?',
         'current_part': part_num
     })
 
-сти)
 def page4_part(request, part_num=1):
     return render(request, 'main/page4.html', {
         'title': 'Цифровая гигиена',
         'current_part': part_num
     })
-
 
 def page5_part(request, part_num=1):
     return render(request, 'main/page5.html', {
