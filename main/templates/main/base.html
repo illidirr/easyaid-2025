@@ -1073,25 +1073,21 @@ footer {
         display: flex;
     }
     
-    /* Симметричное расположение кнопок в десктопной версии */
-    .nav-left, .nav-right {
+    /* РАСПОЛОЖЕНИЕ КНОПОК ПО ТРЕБОВАНИЮ:
+       Слева: кнопка "Назад" и справа от нее "Словарь"
+       Справа: кнопка "Главная" и слева от нее "Войти в аккаунт" */
+    .nav-left-group {
         display: flex;
         gap: 1rem;
         flex: 1;
-    }
-    
-    .nav-left {
         justify-content: flex-start;
     }
     
-    .nav-right {
-        justify-content: flex-end;
-    }
-    
-    .nav-center {
-        flex: 2;
+    .nav-right-group {
         display: flex;
-        justify-content: center;
+        gap: 1rem;
+        flex: 1;
+        justify-content: flex-end;
     }
 }
 
@@ -1558,22 +1554,21 @@ header {
                 <h1>EasyAid</h1>
             </div>
             
-            <!-- ДЕСКТОПНАЯ НАВИГАЦИЯ (горизонтальная, симметричная) -->
+            <!-- ДЕСКТОПНАЯ НАВИГАЦИЯ (горизонтальная) -->
             <div class="nav-container">
-                <div class="nav-left">
+                <!-- ЛЕВАЯ ГРУППА: Назад (если не на главной) + Словарь -->
+                <div class="nav-left-group">
                     {% if request.resolver_match.url_name != 'index' %}
                     <a href="javascript:history.back()" class="back-btn">Назад</a>
                     {% endif %}
+                    <a href="/page5/" class="dictionary-btn">Словарь</a>
                 </div>
                 
-                <div class="nav-center">
-                    <a href="/page5/" class="dictionary-btn">Словарь</a>
+                <!-- ПРАВАЯ ГРУППА: Войти в аккаунт + Главная (если не на главной) -->
+                <div class="nav-right-group">
                     {% if request.resolver_match.url_name != 'index' %}
                     <a href="{% url 'index' %}" class="home-btn">Главная</a>
                     {% endif %}
-                </div>
-                
-                <div class="nav-right">
                     {% if user.is_authenticated %}
                         <a href="{% url 'profile' %}" class="account-btn">Личный кабинет</a>
                     {% else %}
