@@ -133,14 +133,14 @@ def test(request):
         total = len(correct_answers)
         user_answers = {}
 
-        # Проверяем ответы пользователя
+
         for question, correct_answer in correct_answers.items():
             user_answer = request.POST.get(question)
             user_answers[question] = user_answer
             if user_answer == correct_answer:
                 score += 1
 
-        # Сохраняем результат
+
         TestResult.objects.create(
             user=request.user,
             test_name='Тест: Насколько вы защищены от мошенников?',
@@ -149,12 +149,12 @@ def test(request):
             answers=user_answers
         )
 
-        # Обновляем профиль
+  
         profile, created = UserProfile.objects.get_or_create(user=request.user)
         profile.tests_completed += 1
         profile.save()
 
-        # Определяем уровень результата
+
         percentage = int((score / total) * 100)
         if score >= 9:
             level = "Отлично!"
@@ -178,7 +178,6 @@ def test(request):
             'title': 'Результаты теста'
         })
 
-    # Если GET запрос, просто показываем форму теста
     return render(request, 'main/test.html')
 
 
@@ -195,14 +194,14 @@ def test_internet(request):
         total = len(correct_answers)
         user_answers = {}
 
-        # Проверяем ответы пользователя
+
         for question, correct_answer in correct_answers.items():
             user_answer = request.POST.get(question)
             user_answers[question] = user_answer
             if user_answer == correct_answer:
                 score += 1
 
-        # Сохраняем результат
+ 
         TestResult.objects.create(
             user=request.user,
             test_name='Тест по безопасному пользованию интернетом',
@@ -211,12 +210,12 @@ def test_internet(request):
             answers=user_answers
         )
 
-        # Обновляем профиль
+  
         profile, created = UserProfile.objects.get_or_create(user=request.user)
         profile.tests_completed += 1
         profile.save()
 
-        # Определяем уровень результата
+
         percentage = int((score / total) * 100)
         if score >= 8:
             level = "Отлично!"
@@ -240,7 +239,7 @@ def test_internet(request):
             'title': 'Результаты теста'
         })
 
-    # Если GET запрос, просто показываем форму теста
+
     return render(request, 'main/test_internet.html')
 
 def health_check(request):
@@ -249,3 +248,21 @@ def health_check(request):
 
 def simple_test(request):
     return HttpResponse("Django is working!", status=200)
+def page3_part(request, part_num=1):
+    return render(request, 'main/page3.html', {
+        'title': 'Как не стать жертвой мошенничества?',
+        'current_part': part_num
+    })
+
+сти)
+def page4_part(request, part_num=1):
+    return render(request, 'main/page4.html', {
+        'title': 'Цифровая гигиена',
+        'current_part': part_num
+    })
+
+
+def page5_part(request, part_num=1):
+    return render(request, 'main/page5.html', {
+        'current_part': part_num
+    })
