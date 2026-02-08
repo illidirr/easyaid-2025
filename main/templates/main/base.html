@@ -58,7 +58,7 @@ nav {
 
 /* БОЛЬШИЕ КНОПКИ НАВИГАЦИИ */
 .btn, .main-btn, .test-promo-btn, .test-submit-btn, .auth-btn, 
-.back-btn, .home-btn, .dictionary-btn, .account-btn {
+.back-btn, .home-btn, .dictionary-btn, .account-btn, .articles-btn {
     padding: 1.2rem 2.5rem;
     background-color: rgb(206, 229, 214);
     color: rgb(54, 107, 43);
@@ -85,7 +85,7 @@ nav {
 /* Эффект блеска для всех кнопок */
 .btn::after, .main-btn::after, .test-promo-btn::after, .test-submit-btn::after, 
 .auth-btn::after, .back-btn::after, .home-btn::after, .dictionary-btn::after, 
-.account-btn::after {
+.account-btn::after, .articles-btn::after {
     content: '';
     position: absolute;
     top: -100%;
@@ -106,12 +106,14 @@ nav {
 
 .btn:hover::after, .main-btn:hover::after, .test-promo-btn:hover::after, 
 .test-submit-btn:hover::after, .auth-btn:hover::after, .back-btn:hover::after, 
-.home-btn:hover::after, .dictionary-btn:hover::after, .account-btn:hover::after {
+.home-btn:hover::after, .dictionary-btn:hover::after, .account-btn:hover::after,
+.articles-btn:hover::after {
     left: 100%;
 }
 
 /* Ховер эффекты для всех кнопок навигации одинаковые */
-.back-btn:hover, .home-btn:hover, .dictionary-btn:hover, .account-btn:hover {
+.back-btn:hover, .home-btn:hover, .dictionary-btn:hover, .account-btn:hover,
+.articles-btn:hover {
     font-family: 'Lorenzo Sans Bold';
     background-color: rgb(83, 126, 114);
     color: white;
@@ -1075,12 +1077,19 @@ footer {
     
     /* РАСПОЛОЖЕНИЕ КНОПОК ПО ТРЕБОВАНИЮ:
        Слева: кнопка "Назад" и справа от нее "Словарь"
-       Справа: кнопка "Главная" и слева от нее "Войти в аккаунт" */
+       Справа: кнопка "Главная" и слева от нее "Войти в аккаунт"
+       Центр: кнопка "Статьи" */
     .nav-left-group {
         display: flex;
         gap: 1rem;
         flex: 1;
         justify-content: flex-start;
+    }
+    
+    .nav-center-group {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
     }
     
     .nav-right-group {
@@ -1559,6 +1568,74 @@ header {
         gap: 2rem;
     }
 }
+
+/* Стили для выпадающего меню "Статьи" */
+.articles-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.articles-btn {
+    padding: 1.2rem 2.5rem;
+    background-color: rgb(206, 229, 214);
+    color: rgb(54, 107, 43);
+    border-radius: 50px;
+    border: none;
+    font-family: 'Lorenzo Sans Bold';
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.articles-btn i {
+    transition: transform 0.3s ease;
+}
+
+.articles-dropdown:hover .articles-btn i {
+    transform: rotate(180deg);
+}
+
+.articles-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    min-width: 250px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    z-index: 1000;
+    padding: 1rem 0;
+    margin-top: 0.5rem;
+}
+
+.articles-dropdown:hover .articles-dropdown-content {
+    display: block;
+}
+
+.articles-dropdown-item {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: rgb(54, 107, 43);
+    text-decoration: none;
+    font-family: 'Lorenzo Sans Bold';
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.articles-dropdown-item:hover {
+    background-color: rgb(206, 229, 214);
+    color: rgb(54, 107, 43);
+}
+
+.articles-dropdown-item.active {
+    background-color: rgb(169, 211, 197);
+    color: white;
+    font-weight: bold;
+}
     </style>
 
     <meta charset="UTF-8">
@@ -1574,7 +1651,6 @@ header {
             </div>
             
             <div class="nav-container">
-             
                 <div class="nav-left-group">
                     {% if request.resolver_match.url_name != 'index' %}
                     <a href="javascript:history.back()" class="back-btn">Назад</a>
@@ -1582,7 +1658,19 @@ header {
                     <a href="/page5/" class="dictionary-btn">Словарь</a>
                 </div>
                 
-           
+                <div class="nav-center-group">
+                    <div class="articles-dropdown">
+                        <button class="articles-btn">
+                            Статьи <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="articles-dropdown-content">
+                            <a href="/group1/" class="articles-dropdown-item {% if request.resolver_match.url_name == 'group1' %}active{% endif %}">Как распознать мошенников</a>
+                            <a href="/group2/" class="articles-dropdown-item {% if request.resolver_match.url_name == 'group2' %}active{% endif %}">Безопасно пользоваться интернетом</a>
+                            <a href="/faq/" class="articles-dropdown-item {% if request.resolver_match.url_name == 'faq' %}active{% endif %}">Частые вопросы</a>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="nav-right-group">
                     {% if request.resolver_match.url_name != 'index' %}
                     <a href="{% url 'index' %}" class="home-btn">Главная</a>
@@ -1594,16 +1682,7 @@ header {
                     {% endif %}
                 </div>
             </div>
-        <div class="nav-dropdown">
-            <button class="nav-link dropdown-btn">Статьи <i class="fas fa-chevron-down"></i></button>
-             <div class="dropdown-content">
-                <a href="/group1/" class="dropdown-item">Как распознать мошенников</a>
-                <a href="/group2/" class="dropdown-item">Безопасно пользоваться интернетом</a>
-                <a href="/faq/" class="dropdown-item active">Частые вопросы</a>
-              </div>
-        </div>
             
-           
             <div class="mobile-nav">
                 <div class="mobile-nav-row">
                     <a href="/page5/" class="mobile-nav-btn dictionary-btn">Словарь</a>
@@ -1612,6 +1691,15 @@ header {
                     {% else %}
                         <a href="/login/" class="mobile-nav-btn account-btn">Войти в аккаунт</a>
                     {% endif %}
+                </div>
+                
+                <div class="mobile-nav-row">
+                    <a href="/group1/" class="mobile-nav-btn articles-btn">Как распознать мошенников</a>
+                    <a href="/group2/" class="mobile-nav-btn articles-btn">Безопасный интернет</a>
+                </div>
+                
+                <div class="mobile-nav-row">
+                    <a href="/faq/" class="mobile-nav-btn articles-btn">Частые вопросы</a>
                 </div>
                 
                 {% if request.resolver_match.url_name != 'index' %}
