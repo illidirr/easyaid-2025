@@ -81,6 +81,31 @@
                         <li>Присоединяться к чату дома нужно через официальные приложения (например, «Госуслуги Дом») или по приглашению соседей, а не по QR-коду на подъезде.</li>
                     </ul>
                 </div>
+
+                <!-- Добавленная информация о MAX -->
+                <div class="question-item">
+                    <h3>5. «Как зарегистрироваться в мессенджере MAX?»</h3>
+                    
+                    <div class="important-note">
+                        <strong>Важно:</strong> Зарегистрироваться в мессенджере MAX можно только с помощью приложения для телефонов и компьютеров, зарегистрироваться в веб-версии MAX не получится. 
+                        (<a href="https://help.max.ru/help/about/kak-zaregistrirovatsya-v-max" target="_blank" style="color: rgb(48, 123, 142);">https://help.max.ru/help/about/kak-zaregistrirovatsya-v-max</a>)
+                    </div>
+                    
+                    <h4>Процесс регистрации:</h4>
+                    <ol class="steps-list">
+                        <li><strong>Установить приложение MAX</strong> и нажать «Войти».</li>
+                        <li><strong>Ввести номер телефона.</strong> Код придёт в СМС на этот номер.</li>
+                        <li><strong>Нажать «Продолжить»</strong> для получения кода.</li>
+                        <li><strong>Ввести 6-значный код из СМС</strong> и нажать «Продолжить».</li>
+                        <li><strong>Указать имя,</strong> под которым пользователя будут видеть другие пользователи. По желанию можно заполнить фамилию. 
+                            <ul class="facts-list">
+                                <li>Можно вводить русские и латинские буквы, вместе с дефисами и пробелами.</li>
+                                <li>Нельзя использовать цифры, эмодзи и специальные символы.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Нажать «Продолжить».</strong> Регистрация завершена.</li>
+                    </ol>
+                </div>
             </div>
         </div>
 
@@ -407,6 +432,12 @@
         line-height: 1.3;
     }
     
+    .question-item h4 {
+        color: rgb(54, 107, 43);
+        margin: 1.5rem 0 1rem 0;
+        font-size: 2.4rem;
+    }
+    
     .solution-list, .steps-list, .emergency-steps, .safety-rules {
         padding-left: 2rem;
         margin: 1.5rem 0;
@@ -574,6 +605,10 @@
             font-size: 1.8rem;
         }
         
+        .question-item h4 {
+            font-size: 1.6rem;
+        }
+        
         .device-instruction {
             padding: 1.2rem;
         }
@@ -612,6 +647,27 @@
         .conclusion-text {
             font-size: 1.4rem;
         }
+        
+        /* Исправление отступа текста в вертикальном формате */
+        .page-content {
+            margin: 1rem !important;
+            padding: 1.5rem !important;
+        }
+        
+        .page-content h1 {
+            padding-left: 0 !important;
+            margin-left: 0 !important;
+        }
+        
+        .text-content {
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+        }
+        
+        .intro-text {
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+        }
     }
     
     @media (max-width: 480px) {
@@ -628,6 +684,10 @@
         
         .question-item h3 {
             font-size: 1.6rem;
+        }
+        
+        .question-item h4 {
+            font-size: 1.4rem;
         }
     }
 </style>
