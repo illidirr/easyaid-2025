@@ -1540,6 +1540,25 @@ header {
     align-items: center;
     gap: 1rem;
 }
+@media (min-width: 769px) {
+    .button-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem 6rem;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .button-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 4rem;
+    }
+}
+@media (max-width: 768px) {
+    .button-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
     </style>
 
     <meta charset="UTF-8">
