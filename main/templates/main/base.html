@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    max-width: 100%; /* Гарантирует, что ни один элемент не превысит ширину экрана */
 }
 
 body {
@@ -15,6 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* Предотвращает горизонтальный скролл */
 }
 
 header {
@@ -45,6 +47,7 @@ nav {
     color: rgb(48,123,142);
     font-weight: normal;
     margin: 0;
+    word-break: break-word;
 }
 
 /* === ДЕСКТОПНАЯ ГОРИЗОНТАЛЬНАЯ ВЕРСИЯ === */
@@ -138,8 +141,8 @@ nav {
     letter-spacing: 0.8px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: normal; /* Разрешаем перенос текста */
-    word-break: break-word; /* Перенос длинных слов */
+    white-space: normal;
+    word-break: break-word;
 }
 
 .main-btn:hover {
@@ -154,6 +157,8 @@ main {
     margin: 2rem auto;
     padding: 0 2rem;
     flex: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Стили для главной страницы */
@@ -164,6 +169,8 @@ main {
     border-radius: 25px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     margin: 2rem 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .hero-section h1 {
@@ -173,6 +180,7 @@ main {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     font-weight: normal;
     letter-spacing: 1px;
+    word-break: break-word;
 }
 
 .hero-section p {
@@ -184,6 +192,7 @@ main {
     margin-right: auto;
     font-weight: normal;
     letter-spacing: 0.5px;
+    word-break: break-word;
 }
 
 /* Стили для кнопок на главной странице */
@@ -196,6 +205,8 @@ main {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* === СТИЛИ ДЛЯ СТАТЕЙ С БОЛЬШИМ ТЕКСТОМ === */
@@ -209,18 +220,23 @@ main {
     box-shadow: 0 5px 20px rgba(0,0,0,0.9);
     margin: 2rem auto;
     max-width: 1200px;
+    width: calc(100% - 4rem);
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
-/* ТЕКСТ ДЛЯ КОМПЬЮТЕРОВ (ИСПРАВЛЕННЫЙ РАЗМЕР) */
+/* ТЕКСТ ДЛЯ КОМПЬЮТЕРОВ */
 .page-content h1 {
     font-family: 'Lorenzo Sans Bold';
     color: rgb(54, 107, 43);
     margin-bottom: 1.5rem;
-    font-size: 3rem; /* Было 6rem */
+    font-size: 3rem;
     font-weight: normal;
     letter-spacing: 1px;
     line-height: 1.3;
     padding-left: 0;
+    word-break: break-word;
 }
 
 .page-content h2 {
@@ -229,33 +245,37 @@ main {
     margin: 2rem 0;
     font-weight: normal;
     letter-spacing: 0.8px;
-    font-size: 2.5rem; /* Было 4.5rem */
+    font-size: 2.5rem;
     line-height: 1.3;
+    word-break: break-word;
 }
 
 .text-content {
     font-family: 'Lorenzo Sans Bold';
     line-height: 1.5;
     color: #333;
-    font-size: 1.8rem; /* Было 3.2rem */
+    font-size: 1.8rem;
     font-weight: normal;
     letter-spacing: 0.5px;
     margin-left: 0;
     padding-left: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
-/* Блоки с информацией - увеличены */
+/* Блоки с информацией */
 .content-section {
     margin-bottom: 3rem;
 }
 
 .intro-text {
-    font-size: 2rem; /* Было 3.8rem */
+    font-size: 2rem;
     margin-bottom: 2rem;
     font-weight: bold;
     line-height: 1.4;
     margin-left: 0;
     padding-left: 0;
+    word-break: break-word;
 }
 
 .info-block {
@@ -264,39 +284,49 @@ main {
     background: rgba(206, 229, 214, 0.3);
     border-radius: 15px;
     border: 2px solid rgba(206, 229, 214, 0.7);
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .info-block h2 {
     color: rgb(54, 107, 43);
     margin-bottom: 1.5rem;
-    font-size: 2.5rem; /* Было 4.5rem */
+    font-size: 2.5rem;
     line-height: 1.2;
+    word-break: break-word;
 }
 
 .info-block h3 {
     color: rgb(48, 123, 142);
     margin-bottom: 1rem;
-    font-size: 2rem; /* Было 4rem */
+    font-size: 2rem;
     line-height: 1.3;
+    word-break: break-word;
 }
 
 .info-block p {
     margin-bottom: 1.5rem;
-    font-size: 1.8rem; /* Было 3rem */
+    font-size: 1.8rem;
     line-height: 1.5;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .info-block ol, .info-block ul {
     margin-bottom: 1.5rem;
     padding-left: 2rem;
-    font-size: 1.8rem; /* Было 3rem */
+    font-size: 1.8rem;
     line-height: 1.5;
 }
 
 .info-block li {
     margin-bottom: 1rem;
-    font-size: 1.8rem; /* Было 3rem */
+    font-size: 1.8rem;
     line-height: 1.5;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .important-text {
@@ -319,19 +349,23 @@ main {
     border-radius: 20px;
     text-align: center;
     margin-top: 3rem;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .conclusion-block h2 {
     color: rgb(54, 107, 43);
     margin-bottom: 1.5rem;
-    font-size: 2.5rem; /* Было 4.5rem */
+    font-size: 2.5rem;
     line-height: 1.2;
+    word-break: break-word;
 }
 
 .conclusion-text {
-    font-size: 1.8rem; /* Было 3.5rem */
+    font-size: 1.8rem;
     font-weight: bold;
     line-height: 1.5;
+    word-break: break-word;
 }
 
 /* Оглавление */
@@ -341,13 +375,16 @@ main {
     border-radius: 15px;
     margin-bottom: 2rem;
     border-left: 5px solid rgb(169, 211, 197);
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .table-of-contents h3 {
     color: rgb(54, 107, 43);
     margin-bottom: 1rem;
-    font-size: 2rem; /* Было 3.5rem */
+    font-size: 2rem;
     font-weight: normal;
+    word-break: break-word;
 }
 
 .table-of-contents ol {
@@ -356,14 +393,16 @@ main {
 
 .table-of-contents li {
     margin-bottom: 1rem;
-    font-size: 1.6rem; /* Было 3rem */
+    font-size: 1.6rem;
     line-height: 1.4;
+    word-break: break-word;
 }
 
 .table-of-contents a {
     color: rgb(48, 123, 142);
     text-decoration: none;
     transition: color 0.3s ease;
+    word-break: break-word;
 }
 
 .table-of-contents a:hover {
@@ -384,6 +423,8 @@ main {
     border: 3px solid rgb(206, 229, 214);
     border-radius: 15px;
     background-color: rgba(206, 229, 214, 0.2);
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .video-item h3 {
@@ -391,13 +432,15 @@ main {
     margin-bottom: 1rem;
     font-weight: normal;
     letter-spacing: 0.7px;
-    font-size: 2rem; /* Было 3.5rem */
+    font-size: 2rem;
+    word-break: break-word;
 }
 
 video {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     max-width: 100%;
+    height: auto;
 }
 
 /* Стили для футера */
@@ -411,6 +454,7 @@ footer {
     font-weight: normal;
     letter-spacing: 0.5px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 /* Стили для промо-блока теста */
@@ -428,23 +472,27 @@ footer {
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .test-promo h3 {
     font-family: 'Lorenzo Sans Bold';
     color: rgb(54, 107, 43);
-    font-size: 2.5rem; /* Было 3.5rem */
+    font-size: 2.5rem;
     margin-bottom: 1rem;
+    word-break: break-word;
 }
 
 .test-promo p {
     font-family: 'Lorenzo Sans Bold';
     color: #333;
-    font-size: 2rem; /* Было 2.8rem */
+    font-size: 2rem;
     margin-bottom: 2rem;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    word-break: break-word;
 }
 
 .test-promo-btn {
@@ -453,7 +501,7 @@ footer {
     color: white !important;
     padding: 1.2rem 2.5rem;
     border-radius: 50px;
-    font-size: 1.8rem; /* Было 2.2rem */
+    font-size: 1.8rem;
     font-weight: bold;
     border: 2px solid rgb(54, 107, 43);
 }
@@ -474,7 +522,7 @@ footer {
     color: white !important;
     border: none;
     padding: 1.5rem 3rem;
-    font-size: 1.8rem; /* Было 2.2rem */
+    font-size: 1.8rem;
     font-weight: bold;
     border-radius: 50px;
     cursor: pointer;
@@ -484,6 +532,8 @@ footer {
     text-transform: uppercase;
     letter-spacing: 1px;
     min-width: 250px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .test-submit-btn:hover {
@@ -502,13 +552,16 @@ footer {
     background: rgba(248, 251, 250, 0.8);
     border-radius: 15px;
     border: 2px solid rgba(74, 144, 226, 0.2);
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .question-block h3 {
     color: #2d5aa0;
     margin-bottom: 1.5rem;
-    font-size: 1.8rem; /* Было 2rem */
+    font-size: 1.8rem;
     font-weight: bold;
+    word-break: break-word;
 }
 
 .options {
@@ -535,7 +588,9 @@ footer {
     overflow: hidden;
     width: 100%;
     text-align: left;
-    font-size: 1.6rem; /* Было 1.6rem */
+    font-size: 1.6rem;
+    box-sizing: border-box;
+    word-break: break-word;
 }
 
 /* Эффект блеска для вариантов ответов */
@@ -593,6 +648,7 @@ footer {
     align-items: center;
     width: 100%;
     padding-left: 0.5rem;
+    word-break: break-word;
 }
 
 /* Кастомная точка для радио-кнопки */
@@ -626,13 +682,16 @@ footer {
 
 /* Стили для описания теста */
 .test-description {
-    font-size: 1.6rem; /* Было 1.8rem */
+    font-size: 1.6rem;
     color: rgb(16, 58, 87);
     margin-bottom: 2rem;
     padding: 1.5rem;
     background: rgba(206, 229, 214, 0.5);
     border-radius: 10px;
     border-left: 4px solid rgb(169, 211, 197);
+    word-break: break-word;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 /* === СТИЛИ ДЛЯ ФОРМ АВТОРИЗАЦИИ === */
@@ -646,11 +705,14 @@ footer {
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     border: 2px solid rgb(206, 229, 214);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Группа полей ввода */
 .form-group {
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .form-group label {
@@ -660,6 +722,7 @@ footer {
     color: rgb(54, 107, 43);
     font-size: 1.6rem;
     font-family: 'Lorenzo Sans Bold';
+    word-break: break-word;
 }
 
 /* Стили для полей ввода */
@@ -707,6 +770,7 @@ footer {
     font-weight: bold;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 /* Эффект блеска для кнопки авторизации */
@@ -744,6 +808,7 @@ footer {
     color: #666;
     margin-top: 1.5rem;
     font-family: 'Lorenzo Sans Bold';
+    word-break: break-word;
 }
 
 .auth-link a {
@@ -751,6 +816,7 @@ footer {
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
+    word-break: break-word;
 }
 
 .auth-link a:hover {
@@ -765,6 +831,7 @@ footer {
     margin-top: 0.5rem;
     padding-left: 0.5rem;
     font-family: 'Lorenzo Sans Bold';
+    word-break: break-word;
 }
 
 /* Сообщения об успехе */
@@ -778,10 +845,15 @@ footer {
     border-left: 4px solid rgb(54, 107, 43);
     text-align: center;
     font-family: 'Lorenzo Sans Bold';
+    word-break: break-word;
 }
 
 /* === МОБИЛЬНАЯ ВЕРТИКАЛЬНАЯ ВЕРСИЯ (до 768px) === */
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+    
     nav {
         padding: 1rem;
         gap: 1rem;
@@ -812,6 +884,7 @@ footer {
         justify-content: center;
         gap: 1rem;
         width: 100%;
+        flex-wrap: wrap;
     }
     
     /* Увеличенные кнопки для мобильной версии */
@@ -832,6 +905,8 @@ footer {
         transition: all 0.3s ease;
         flex: 1;
         max-width: 180px;
+        box-sizing: border-box;
+        word-break: break-word;
     }
     
     /* Эффект блеска для мобильных кнопок */
@@ -865,12 +940,29 @@ footer {
         box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     }
     
+    main {
+        padding: 0 1rem;
+        margin: 1rem auto;
+        width: 100%;
+    }
+    
     /* АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ (ВЕРТИКАЛЬНО) */
+    .page-content {
+        padding: 1.5rem !important;
+        margin: 1rem 0.5rem !important;
+        border-radius: 15px;
+        width: calc(100% - 1rem) !important;
+        max-width: calc(100% - 1rem) !important;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
     .page-content h1 {
         font-size: 2.2rem !important;
         padding-left: 0 !important;
         margin-bottom: 1.5rem;
         line-height: 1.3;
+        word-break: break-word;
     }
 
     .page-content h2 {
@@ -878,6 +970,7 @@ footer {
         margin: 1.2rem 0 1.8rem 0;
         padding-left: 0;
         line-height: 1.3;
+        word-break: break-word;
     }
 
     .text-content {
@@ -885,6 +978,8 @@ footer {
         line-height: 1.5;
         margin-left: 0 !important;
         padding-left: 0 !important;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     .intro-text {
@@ -893,24 +988,31 @@ footer {
         padding-left: 0 !important;
         margin-bottom: 1.2rem;
         line-height: 1.4;
+        word-break: break-word;
     }
 
     .info-block {
         padding: 1.2rem !important;
         margin-bottom: 1.5rem;
         border-radius: 12px;
+        width: 100% !important;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     .info-block h2 {
         font-size: 1.6rem !important;
         margin-bottom: 1rem;
         padding-left: 0;
+        word-break: break-word;
     }
 
     .info-block h3 {
         font-size: 1.4rem !important;
         margin-bottom: 0.8rem;
         padding-left: 0;
+        word-break: break-word;
     }
 
     .info-block p,
@@ -919,6 +1021,8 @@ footer {
         line-height: 1.5;
         margin-bottom: 0.8rem;
         padding-left: 0;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     .info-block ul,
@@ -931,35 +1035,43 @@ footer {
         padding: 1.5rem !important;
         margin-top: 2rem;
         border-radius: 15px;
+        width: 100% !important;
     }
 
     .conclusion-block h2 {
         font-size: 1.6rem !important;
         margin-bottom: 1rem;
+        word-break: break-word;
     }
 
     .conclusion-text {
         font-size: 1.2rem !important;
         line-height: 1.5;
+        word-break: break-word;
     }
 
     .table-of-contents {
         padding: 1.2rem !important;
         margin-bottom: 1.5rem;
+        width: 100% !important;
+        box-sizing: border-box;
     }
 
     .table-of-contents h3 {
         font-size: 1.4rem !important;
         padding-left: 0;
+        word-break: break-word;
     }
 
     .table-of-contents li {
         font-size: 1.1rem !important;
+        word-break: break-word;
     }
 
     .video-item h3 {
         font-size: 1.4rem !important;
         padding-left: 0;
+        word-break: break-word;
     }
 
     /* АДАПТАЦИЯ ФОРМ АВТОРИЗАЦИИ ДЛЯ ТЕЛЕФОНОВ */
@@ -967,6 +1079,7 @@ footer {
         padding: 1.5rem;
         margin: 1rem 0.5rem;
         border-radius: 15px;
+        width: calc(100% - 1rem) !important;
     }
 
     .form-group label {
@@ -978,6 +1091,7 @@ footer {
         padding: 1rem 1.2rem;
         font-size: 1.2rem;
         border-radius: 12px;
+        width: 100%;
     }
 
     .form-group input::placeholder {
@@ -988,6 +1102,7 @@ footer {
         padding: 1rem;
         font-size: 1.2rem;
         margin-bottom: 1rem;
+        width: 100%;
     }
 
     .auth-link {
@@ -999,17 +1114,22 @@ footer {
         padding: 1.2rem;
         margin-bottom: 2rem;
         border-radius: 12px;
+        width: 100%;
     }
 
     .question-block h3 {
         font-size: 1.4rem;
         margin-bottom: 1.2rem;
+        word-break: break-word;
     }
 
     .option {
         padding: 1rem 1.2rem;
         font-size: 1rem;
         border-radius: 40px;
+        width: 100%;
+        box-sizing: border-box;
+        word-break: break-word;
     }
 
     .custom-radio {
@@ -1022,6 +1142,7 @@ footer {
         font-size: 1.1rem;
         padding: 1rem;
         margin-bottom: 1.5rem;
+        width: 100%;
     }
 
     /* Hero секция */
@@ -1029,22 +1150,26 @@ footer {
         padding: 2rem 1rem;
         margin: 1rem 0;
         border-radius: 15px;
+        width: 100%;
     }
 
     .hero-section h1 {
         font-size: 1.8rem;
         line-height: 1.3;
+        word-break: break-word;
     }
 
     .hero-section p {
         font-size: 1rem;
         line-height: 1.5;
+        word-break: break-word;
     }
 
     /* Кнопки на главной */
     .button-grid {
         gap: 1rem;
         padding: 0;
+        width: 100%;
     }
 
     .main-btn {
@@ -1053,6 +1178,7 @@ footer {
         font-size: 1rem;
         white-space: normal;
         word-break: break-word;
+        width: 100%;
     }
 
     /* Статья */
@@ -1060,6 +1186,14 @@ footer {
         padding: 1.5rem !important;
         margin: 1rem 0.5rem !important;
         border-radius: 15px;
+        width: calc(100% - 1rem) !important;
+    }
+    
+    /* Кнопки навигации для мобильных */
+    .back-btn, .home-btn, .dictionary-btn, .account-btn {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 }
 
@@ -1073,9 +1207,7 @@ footer {
         display: flex;
     }
     
-    /* РАСПОЛОЖЕНИЕ КНОПОК:
-       Слева: кнопка "Назад" и справа от нее "Словарь"
-       Справа: кнопка "Главная" и слева от нее "Войти в аккаунт" */
+    /* РАСПОЛОЖЕНИЕ КНОПОК */
     .nav-left-group {
         display: flex;
         gap: 1rem;
@@ -1093,46 +1225,36 @@ footer {
 
 /* Для очень маленьких телефонов */
 @media (max-width: 480px) and (orientation: portrait) {
+    .page-content {
+        padding: 1rem 0.8rem !important;
+        margin: 0.5rem !important;
+        width: calc(100% - 1rem) !important;
+    }
+
     .page-content h1 {
         font-size: 1.8rem !important;
         padding-left: 0 !important;
+        word-break: break-word;
     }
 
     .page-content h2 {
         font-size: 1.5rem !important;
+        word-break: break-word;
     }
 
     .text-content {
         font-size: 1rem !important;
         padding-left: 0 !important;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
-
-    /* Адаптация форм для маленьких экранов */
-    .auth-form {
-        padding: 1.2rem;
-        margin: 0.5rem;
-    }
-
-    .form-group input {
-        padding: 0.8rem 1rem;
-        font-size: 1.1rem;
-    }
-
-    .auth-btn {
-        padding: 0.9rem;
-        font-size: 1.1rem;
-    }
-
-    /* Адаптация тестов для маленьких экранов */
-    .option {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-    }
-
-    .custom-radio {
-        width: 16px;
-        height: 16px;
-        margin-right: 0.6rem;
+    
+    .info-block {
+        padding: 1rem !important;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
     
     /* Меньшие кнопки для очень маленьких экранов */
@@ -1151,38 +1273,47 @@ footer {
 
 /* === ГОРИЗОНТАЛЬНЫЕ ТЕЛЕФОНЫ === */
 @media (max-width: 768px) and (orientation: landscape) {
+    .page-content {
+        padding: 1.5rem !important;
+        margin: 1rem !important;
+        width: calc(100% - 2rem) !important;
+        max-width: calc(100% - 2rem) !important;
+    }
+
     .page-content h1 {
         font-size: 2rem !important;
+        word-break: break-word;
     }
 
     .page-content h2 {
         font-size: 1.6rem !important;
+        word-break: break-word;
     }
 
     .text-content {
         font-size: 1.2rem !important;
-    }
-
-    .page-content {
-        padding: 1.5rem !important;
-        margin: 1rem !important;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     .button-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+        width: 100%;
     }
 
     /* Адаптация форм для горизонтальных экранов */
     .auth-form {
         max-width: 400px;
         padding: 1.5rem;
+        width: calc(100% - 1rem);
     }
 
     /* Адаптация тестов для горизонтальных экранов */
     .option {
         padding: 1rem 1.5rem;
         font-size: 1.1rem;
+        width: 100%;
     }
     
     /* Для горизонтальных телефонов показываем кнопки в строку */
@@ -1202,24 +1333,31 @@ footer {
     .page-content {
         padding: 2rem !important;
         margin: 1.5rem !important;
+        width: calc(100% - 3rem) !important;
+        box-sizing: border-box;
     }
 
     .page-content h1 {
         font-size: 2.5rem !important;
+        word-break: break-word;
     }
 
     .page-content h2 {
         font-size: 2.2rem !important;
+        word-break: break-word;
     }
 
     .text-content {
         font-size: 1.6rem !important;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     /* Адаптация форм для планшетов */
     .auth-form {
         max-width: 450px;
         padding: 2rem;
+        width: calc(100% - 2rem);
     }
 
     .form-group label {
@@ -1239,15 +1377,18 @@ footer {
     /* Адаптация тестов для планшетов */
     .question-block h3 {
         font-size: 1.6rem;
+        word-break: break-word;
     }
 
     .option {
         font-size: 1.4rem;
         padding: 1rem 1.5rem;
+        width: 100%;
     }
 
     .test-description {
         font-size: 1.4rem;
+        width: 100%;
     }
 }
 
@@ -1256,7 +1397,8 @@ footer {
     .button-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-        max-width: 100%;
+        width: 100%;
+        padding: 0 1rem;
     }
 
     .main-btn {
@@ -1265,36 +1407,46 @@ footer {
         font-size: 1.2rem;
         white-space: normal;
         word-break: break-word;
+        width: 100%;
     }
 
     .hero-section {
         padding: 4rem 1.5rem;
         margin: 1rem;
+        width: calc(100% - 2rem);
     }
 
     .hero-section h1 {
         font-size: 2.2rem;
+        word-break: break-word;
     }
 
     .hero-section p {
         font-size: 1.1rem;
+        word-break: break-word;
     }
 
     .test-promo {
         padding: 2rem 1.5rem;
+        width: calc(100% - 2rem);
     }
 
     .test-promo h3 {
         font-size: 2.2rem;
+        word-break: break-word;
     }
 
     .test-promo p {
         font-size: 1.8rem;
+        word-break: break-word;
     }
 
     .test-promo-btn {
         padding: 1rem 2rem;
         font-size: 1.6rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .test-submit-btn {
@@ -1302,6 +1454,7 @@ footer {
         font-size: 1.6rem;
         min-width: 200px;
         margin: 2rem auto 1rem auto;
+        width: calc(100% - 4rem);
     }
 }
 
@@ -1329,6 +1482,8 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .profile-header {
@@ -1347,11 +1502,13 @@ header {
 .welcome-text h2 {
     color: rgb(48, 123, 142);
     margin-bottom: 0.5rem;
+    word-break: break-word;
 }
 
 .user-email {
     color: #666;
     font-size: 1.1rem;
+    word-break: break-word;
 }
 
 .user-stats {
@@ -1359,6 +1516,7 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     margin-bottom: 3rem;
+    width: 100%;
 }
 
 .stat-card {
@@ -1370,33 +1528,40 @@ header {
     align-items: center;
     gap: 1rem;
     border-left: 4px solid rgb(169, 211, 197);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .stat-info h3 {
     color: #666;
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
+    word-break: break-word;
 }
 
 .stat-value {
     color: rgb(48, 123, 142);
     font-size: 1.5rem;
     font-weight: bold;
+    word-break: break-word;
 }
 
 .test-results-section {
     margin-bottom: 3rem;
+    width: 100%;
 }
 
 .test-results-section h2 {
     color: rgb(48, 123, 142);
     margin-bottom: 1.5rem;
     text-align: center;
+    word-break: break-word;
 }
 
 .results-container {
     display: grid;
     gap: 1.5rem;
+    width: 100%;
 }
 
 .result-card {
@@ -1404,6 +1569,8 @@ header {
     padding: 1.5rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .result-header {
@@ -1411,16 +1578,19 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
 }
 
 .result-header h3 {
     color: rgb(54, 107, 43);
     margin: 0;
+    word-break: break-word;
 }
 
 .result-date {
     color: #666;
     font-size: 0.9rem;
+    word-break: break-word;
 }
 
 .result-score {
@@ -1428,6 +1598,7 @@ header {
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
 }
 
 .score-circle {
@@ -1440,21 +1611,25 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .score-number {
     font-size: 1.5rem;
     font-weight: bold;
     line-height: 1;
+    word-break: break-word;
 }
 
 .score-max {
     font-size: 0.8rem;
+    word-break: break-word;
 }
 
 .score-percentage {
     color: #666;
     font-size: 1.1rem;
+    word-break: break-word;
 }
 
 .result-status {
@@ -1467,6 +1642,7 @@ header {
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: bold;
+    word-break: break-word;
 }
 
 .status-badge.perfect {
@@ -1489,16 +1665,20 @@ header {
     padding: 3rem;
     background: rgba(206, 229, 214, 0.3);
     border-radius: 15px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .no-results h3 {
     color: rgb(48, 123, 142);
     margin-bottom: 0.5rem;
+    word-break: break-word;
 }
 
 .no-results p {
     color: #666;
     margin-bottom: 1.5rem;
+    word-break: break-word;
 }
 
 .start-test-btn {
@@ -1508,6 +1688,7 @@ header {
 
 .profile-actions {
     text-align: center;
+    width: 100%;
 }
 
 .logout-btn {
@@ -1524,6 +1705,8 @@ header {
     padding: 1.2rem 2.5rem;
     margin-top: 2rem;
     display: inline-block;
+    width: auto;
+    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
@@ -1531,19 +1714,25 @@ header {
         font-size: 1.2rem;
         padding: 1rem 2rem;
         margin-top: 1.5rem;
+        width: calc(100% - 2rem);
+        max-width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
-
 
 .account-section {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
+
 @media (min-width: 769px) {
     .button-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 3rem 6rem;
+        width: 100%;
     }
 }
 
@@ -1551,18 +1740,35 @@ header {
     .button-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem 4rem;
+        width: 100%;
     }
 }
+
 @media (max-width: 768px) {
     .button-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+        width: 100%;
+        padding: 0 1rem;
     }
 }
-    
-/* Исправление отступа текста в вертикальном формате */
+
+/* Для изображений и медиа */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Для длинных ссылок */
+.page-content a {
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+/* Исправление отступа текста */
 .page-content {
-    margin: 1rem !important;
+    margin: 1rem auto !important;
     padding: 1.5rem !important;
 }
 
