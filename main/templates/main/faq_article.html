@@ -733,12 +733,19 @@
         document.querySelector('.page-info').textContent = `Часть ${currentPart} из ${totalParts}`;
         document.querySelector('.page-info-bottom').textContent = `Часть ${currentPart} из ${totalParts}`;
         
-        // Обновляем кнопки навигации
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
+        // Обновляем кнопки навигации вверху
+        const topPrevBtn = document.querySelector('.page-navigation .prev-btn');
+        const topNextBtn = document.querySelector('.page-navigation .next-btn');
         
-        if (prevBtn) prevBtn.style.display = currentPart > 1 ? 'block' : 'none';
-        if (nextBtn) nextBtn.style.display = currentPart < totalParts ? 'block' : 'none';
+        if (topPrevBtn) topPrevBtn.style.display = currentPart > 1 ? 'block' : 'none';
+        if (topNextBtn) topNextBtn.style.display = currentPart < totalParts ? 'block' : 'none';
+        
+        // Обновляем кнопки навигации внизу
+        const bottomPrevBtn = document.querySelector('.page-navigation-bottom .prev-btn');
+        const bottomNextBtn = document.querySelector('.page-navigation-bottom .next-btn');
+        
+        if (bottomPrevBtn) bottomPrevBtn.style.display = currentPart > 1 ? 'block' : 'none';
+        if (bottomNextBtn) bottomNextBtn.style.display = currentPart < totalParts ? 'block' : 'none';
         
         // Обновляем активный номер страницы
         document.querySelectorAll('.page-number').forEach((num, index) => {
