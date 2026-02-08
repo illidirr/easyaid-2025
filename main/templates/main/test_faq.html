@@ -1,0 +1,241 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="page-content">
+    <h1>Тест: Частые вопросы о мошенничестве и безопасности</h1>
+    
+    <p class="test-description">
+        Проверьте свои знания после изучения материалов о мошенничестве и безопасности.
+        Выберите правильные ответы на вопросы.
+    </p>
+
+    <form id="testForm" method="POST" action="#">
+        {% csrf_token %}
+        
+        <div class="question-block">
+            <h3>1. Что нужно делать, если вам звонят и представляются сотрудниками банка, требуя перевести деньги на «безопасный счет»?</h3>
+            
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Немедленно перевести деньги, так как это срочно</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Повесить трубку и перезвонить в банк по официальному номеру</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Сообщить данные своей карты для проверки</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q1" value="d">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Ничего не делать и ждать следующего звонка</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>2. Какой самый главный принцип, чтобы не стать жертвой мошенников?</h3>
+            
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q2" value="a">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Всегда отвечать на все звонки</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q2" value="b">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Никогда и никому не сообщать пароли и коды из SMS</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q2" value="c">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Переводить деньги только по утрам</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q2" value="d">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Использовать только наличные деньги</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>3. Что делать, если к вам пришли люди, представившиеся соцработниками?</h3>
+            
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q3" value="a">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Немедленно впустить их в квартиру</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q3" value="b">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Общаться через дверь и проверить их данные</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q3" value="c">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Дать им деньги на «оформление документов»</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q3" value="d">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Не открывать дверь и ни с кем не разговаривать</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>4. Что делать, если вы все же перевели деньги мошенникам?</h3>
+            
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q4" value="a">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Сразу позвонить в банк и заблокировать карту</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q4" value="b">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Никому не рассказывать, чтобы не было стыдно</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q4" value="c">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Ждать, пока мошенники вернут деньги</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q4" value="d">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Продолжить общение с мошенниками</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <h3>5. Где безопаснее всего скачивать приложения на телефон?</h3>
+            
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q5" value="a">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">Только из официальных магазинов (App Store, Play Маркет)</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q5" value="b">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">С любых сайтов в интернете</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q5" value="c">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">По ссылкам из рекламы в соцсетях</span>
+                </label>
+                
+                <label class="option">
+                    <input type="radio" name="q5" value="d">
+                    <span class="custom-radio"></span>
+                    <span class="option-content">У незнакомых людей по объявлениям</span>
+                </label>
+            </div>
+        </div>
+
+        <button type="submit" class="test-submit-btn">Завершить тест</button>
+    </form>
+
+    <div id="testResults" style="display: none; margin-top: 3rem;">
+        <div class="result-card">
+            <div class="result-header">
+                <h3>Результаты теста</h3>
+            </div>
+            <div class="result-score">
+                <div class="score-circle">
+                    <span class="score-number" id="scoreValue">0</span>
+                    <span class="score-max">/5</span>
+                </div>
+                <div class="score-percentage" id="scorePercentage">0%</div>
+            </div>
+            <div class="result-feedback" id="feedbackText"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('testForm');
+        const resultsDiv = document.getElementById('testResults');
+        const scoreValue = document.getElementById('scoreValue');
+        const scorePercentage = document.getElementById('scorePercentage');
+        const feedbackText = document.getElementById('feedbackText');
+        
+        // Правильные ответы
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'b', 
+            q3: 'b',
+            q4: 'a',
+            q5: 'a'
+        };
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+            
+            // Проверяем ответы
+            for (const question in correctAnswers) {
+                const selectedOption = form.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption && selectedOption.value === correctAnswers[question]) {
+                    score++;
+                }
+            }
+            
+            // Показываем результаты
+            scoreValue.textContent = score;
+            const percentage = Math.round((score / totalQuestions) * 100);
+            scorePercentage.textContent = `${percentage}%`;
+            
+            // Определяем обратную связь
+            let feedback = '';
+            if (score === totalQuestions) {
+                feedback = 'Отлично! Вы отлично разбираетесь в вопросах безопасности!';
+            } else if (score >= 3) {
+                feedback = 'Хорошо! Вы знаете основные правила безопасности, но есть что повторить.';
+            } else {
+                feedback = 'Внимательно изучите материалы еще раз и попробуйте пройти тест заново.';
+            }
+            
+            feedbackText.textContent = feedback;
+            resultsDiv.style.display = 'block';
+            
+            // Прокручиваем к результатам
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
+{% endblock %}
