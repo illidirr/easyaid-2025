@@ -1534,7 +1534,7 @@ header {
     }
 }
 
-/* Стиль для account-section чтобы кнопки были в строку */
+
 .account-section {
     display: flex;
     align-items: center;
@@ -1554,9 +1554,8 @@ header {
                 <h1>EasyAid</h1>
             </div>
             
-            <!-- ДЕСКТОПНАЯ НАВИГАЦИЯ (горизонтальная) -->
             <div class="nav-container">
-                <!-- ЛЕВАЯ ГРУППА: Назад (если не на главной) + Словарь -->
+             
                 <div class="nav-left-group">
                     {% if request.resolver_match.url_name != 'index' %}
                     <a href="javascript:history.back()" class="back-btn">Назад</a>
@@ -1564,7 +1563,7 @@ header {
                     <a href="/page5/" class="dictionary-btn">Словарь</a>
                 </div>
                 
-                <!-- ПРАВАЯ ГРУППА: Войти в аккаунт + Главная (если не на главной) -->
+           
                 <div class="nav-right-group">
                     {% if request.resolver_match.url_name != 'index' %}
                     <a href="{% url 'index' %}" class="home-btn">Главная</a>
@@ -1576,8 +1575,16 @@ header {
                     {% endif %}
                 </div>
             </div>
+        <div class="nav-dropdown">
+            <button class="nav-link dropdown-btn">Статьи <i class="fas fa-chevron-down"></i></button>
+             <div class="dropdown-content">
+                <a href="/group1/" class="dropdown-item">Как распознать мошенников</a>
+                <a href="/group2/" class="dropdown-item">Безопасно пользоваться интернетом</a>
+                <a href="/faq/" class="dropdown-item active">Частые вопросы</a>
+              </div>
+        </div>
             
-            <!-- МОБИЛЬНАЯ НАВИГАЦИЯ (вертикальная, 2 ряда по 2 кнопки) -->
+           
             <div class="mobile-nav">
                 <div class="mobile-nav-row">
                     <a href="/page5/" class="mobile-nav-btn dictionary-btn">Словарь</a>
