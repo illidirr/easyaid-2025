@@ -267,3 +267,8 @@ def page5_part(request, part_num=1):
     return render(request, 'main/page5.html', {
         'current_part': part_num
     })
+def faq_article(request):
+    return render(request, 'main/faq_article.html', {'title': 'Частые вопросы о мошенничестве и безопасности'})
+
+def test_faq(request):
+    return render(request, 'main/test_faq.html', {'title': 'Тест: Частые вопросы о мошенничестве и безопасности'})
