@@ -1,0 +1,720 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Частые вопросы о мошенничестве и безопасности{% endblock %}
+
+{% block content %}
+<div class="page-content">
+    <h1>Частые вопросы о мошенничестве и безопасности</h1>
+
+    <!-- страницы -->
+    <div class="page-indicator">
+        <div class="page-info">
+            Часть 1 из 3
+        </div>
+        <div class="page-navigation">
+            <a href="#" class="page-nav-btn prev-btn" onclick="showPrevPart(event)">← Предыдущая часть</a>
+            
+            <div class="page-numbers">
+                <span class="page-number active" onclick="showPart(1)">1</span>
+                <a href="#" class="page-number" onclick="showPart(2, event)">2</a>
+                <a href="#" class="page-number" onclick="showPart(3, event)">3</a>
+            </div>
+            
+            <a href="#" class="page-nav-btn next-btn" onclick="showNextPart(event)">Следующая часть →</a>
+        </div>
+    </div>
+
+    <div class="text-content">
+        <!-- Часть 1 -->
+        <div class="content-section part" data-part="1">
+            <p class="intro-text">
+                В этой статье собраны ответы на самые частые вопросы о мошенничестве и безопасности, которые помогут вам защитить себя и своих близких.
+            </p>
+
+            <div class="info-block">
+                <h2>Частые вопросы о мошенничестве</h2>
+                
+                <div class="question-item">
+                    <h3>1. «Мне позвонил родственник/знакомый и просит срочно перевести деньги на залог или лечение. Что делать?»</h3>
+                    
+                    <ol class="solution-list">
+                        <li><strong>Не паниковать и не переводить деньги сразу.</strong></li>
+                        <li><strong>Задать контрольный вопрос</strong>, ответ на который знает только настоящий родственник (например, имя домашнего питомца или деталь из детства).</li>
+                        <li><strong>Повесить трубку и перезвонить</strong> внуку/родственнику на номер, который у вас есть и который вы знаете. Мошенники могут использовать поддельные номера или даже имитацию голоса.</li>
+                    </ol>
+                </div>
+
+                <div class="question-item">
+                    <h3>2. «Звонят из банка/полиции/Банка России и говорят, что мои деньги в опасности. Требуют перевести их на «безопасный счет». Это правда?»</h3>
+                    
+                    <p class="warning-text">Нет, это обман. Настоящие сотрудники никогда не звонят с такими требованиями.</p>
+                    
+                    <ul class="facts-list">
+                        <li>Банки и Банк России не открывают счета для «защиты» средств граждан и не звонят с предложениями перевести деньги.</li>
+                        <li>Полиция не проводит «операций» с переводом денег граждан на спецсчета.</li>
+                    </ul>
+                    
+                    <div class="important-note">
+                        <strong>Что делать:</strong> Немедленно закончить разговор и самостоятельно перезвонить в организацию по официальному номеру с их сайта или из документов.
+                    </div>
+                </div>
+
+                <div class="question-item">
+                    <h3>3. «Пришли люди, представились соцработниками или сантехниками, просят впустить. Как поступить?»</h3>
+                    
+                    <p class="warning-text">Не открывайте дверь незнакомцам.</p>
+                    
+                    <ol class="steps-list">
+                        <li><strong>Правило №1:</strong> Общайтесь через дверь или цепочку.</li>
+                        <li><strong>Правило №2:</strong> Попросите предъявить удостоверение и назвать ФИО и организацию.</li>
+                        <li><strong>Правило №3:</strong> Не открывая двери, позвоните в эту организацию (УК, соцслужбу), чтобы уточнить, направляли ли они сотрудника. Мошенники, как правило, уходят, услышав это.</li>
+                    </ol>
+                </div>
+
+                <div class="question-item">
+                    <h3>4. «Прислали ссылку для оплаты долга за ЖКУ или для входа в чат дома. Можно переходить?»</h3>
+                    
+                    <p class="warning-text">Нет, нельзя. Это фишинговые ссылки.</p>
+                    
+                    <ul class="advice-list">
+                        <li>Оплачивать ЖКУ нужно только через официальные сайты, приложения банков или в отделениях. Не переходите по ссылкам из SMS или мессенджеров.</li>
+                        <li>Присоединяться к чату дома нужно через официальные приложения (например, «Госуслуги Дом») или по приглашению соседей, а не по QR-коду на подъезде.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Часть 2 (скрыта по умолчанию) -->
+        <div class="content-section part" data-part="2" style="display: none;">
+            <div class="info-block">
+                <h2>Частые вопросы о безопасности</h2>
+
+                <div class="question-item">
+                    <h3>1. «Какой самый главный принцип, чтобы не стать жертвой?»</h3>
+                    
+                    <div class="golden-rule">
+                        <strong>Золотое правило:</strong> НИКОГДА и НИКОМУ не сообщайте по телефону или в интернете:
+                    </div>
+                    
+                    <ul class="forbidden-list">
+                        <li>Пароли и коды из SMS от банка.</li>
+                        <li>Данные банковской карты (номер, срок, CVC/CVV).</li>
+                        <li>Паспортные данные и номер СНИЛС.</li>
+                    </ul>
+                    
+                    <p class="important-note">
+                        Настоящие организации никогда не запрашивают эту информацию по телефону.
+                    </p>
+                </div>
+
+                <div class="question-item">
+                    <h3>2. «Что делать, если я все же перевел(а) деньги мошенникам?»</h3>
+                    
+                    <ol class="emergency-steps">
+                        <li>
+                            <strong>Немедленно позвонить в банк, который выпустил карту.</strong> 
+                            Сообщить о мошенничестве и заблокировать карту.
+                        </li>
+                        <li>
+                            <strong>Обратиться в полицию.</strong> 
+                            Подать заявление по факту мошенничества (телефон 102 с мобильного или 112). Это важно для расследования.
+                        </li>
+                        <li>
+                            <strong>Не стесняться и рассказать о случившемся близким.</strong> 
+                            Вина лежит на преступнике, а не на жертве.
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="info-block">
+                    <h2>Полезные контакты и профилактика</h2>
+                    
+                    <div class="contacts-section">
+                        <h3>Телефоны для экстренных случаев:</h3>
+                        
+                        <ul class="contacts-list">
+                            <li><strong>Полиция:</strong> 102 с мобильного, 112 — единый номер экстренных служб.</li>
+                            <li><strong>Банк:</strong> номер службы поддержки, указанный на обратной стороне вашей банковской карты.</li>
+                        </ul>
+                    </div>
+
+                    <div class="prevention-section">
+                        <h3>Советы для родственников:</h3>
+                        
+                        <ul class="prevention-list">
+                            <li>Установите на телефон пожилого человека приложение «СберБанк Онлайн» (или другого банка) с включенным бесплатным определителем номеров. Оно помогает блокировать звонки мошенников.</li>
+                            <li>Активируйте сервис «Близкие рядом» или аналогичный в приложении банка. Это позволит вам видеть подозрительные операции и вовремя вмешаться.</li>
+                            <li>Проводите «ликбезы»: спокойно и регулярно обсуждайте новые схемы мошенничества. Договоритесь о секретном слове для семьи на экстренный случай.</li>
+                            <li>Помогите настроить двухфакторную аутентификацию в важных сервисах и установите антивирус на компьютер.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Часть 3-->
+        <div class="content-section part" data-part="3" style="display: none;">
+            <div class="info-block">
+                <h2>Инструкция по установке и удалению приложений</h2>
+                
+                <p class="intro-text">
+                    Краткая пошаговая инструкция для пожилого человека по установке и удалению приложений на разных устройствах. Сохраните её как памятку.
+                </p>
+
+                <div class="device-instruction">
+                    <h3>Смартфон (iPhone / Айфон)</h3>
+                    
+                    <div class="instruction-block">
+                        <h4>Как скачать:</h4>
+                        <ol>
+                            <li>Найдите на экране значок App Store .</li>
+                            <li>Нажмите на иконку лупы (Поиск) внизу.</li>
+                            <li>Наберите название приложения (например, "Госуслуги").</li>
+                            <li>Нажмите кнопку "Загрузить" (белая с облачком) или "Получить". Может потребоваться ввод пароля от Apple ID, Face ID или Touch ID.</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="instruction-block">
+                        <h4>Как удалить:</h4>
+                        <ol>
+                            <li>Нажмите и удерживайте палец на значке ненужного приложения на экране.</li>
+                            <li>Выберите "Удалить приложение".</li>
+                            <li>Подтвердите: "Удалить" → "Удалить приложение".</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="device-instruction">
+                    <h3>Смартфон (Android / Андроид: Samsung, Xiaomi и др.)</h3>
+                    
+                    <div class="instruction-block">
+                        <h4>Как скачать:</h4>
+                        <ol>
+                            <li>Найдите на экране значок Play Маркет (разноцветный треугольник).</li>
+                            <li>Нажмите на строку "Поиск" вверху.</li>
+                            <li>Наберите название приложения.</li>
+                            <li>Нажмите зеленую кнопку "Установить". Может потребоваться подтверждение отпечатком пальца или паролем Google.</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="instruction-block">
+                        <h4>Как удалить:</h4>
+                        <ol>
+                            <li>Нажмите и удерживайте палец на значке приложения.</li>
+                            <li>В появившемся меню выберите "Удалить" (может быть значок корзины или надпись).</li>
+                            <li>Подтвердите удаление в появившемся окне.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="device-instruction">
+                    <h3> Компьютер (Windows)</h3>
+                    
+                    <div class="instruction-block">
+                        <h4>Как скачать (из интернета):</h4>
+                        <ol>
+                            <li>Откройте браузер (Яндекс.Браузер, Chrome).</li>
+                            <li>В строке поиска напишите: [название программы] скачать официальный сайт (например, скайп скачать официальный сайт).</li>
+                            <li><strong>Важно!</strong> Заходите ТОЛЬКО на официальный сайт программы (например, www.skype.com).</li>
+                            <li>Найдите кнопку "Скачать" или "Download" и нажмите её.</li>
+                            <li>Внизу браузера появится загруженный файл (обычно с расширением .exe). Нажмите на него, чтобы запустить установку, и следуйте подсказкам на экране (чаще всего нужно просто нажимать "Далее").</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="instruction-block">
+                        <h4>Как удалить:</h4>
+                        <ol>
+                            <li>Нажмите кнопку "Пуск" (значок Windows).</li>
+                            <li>Выберите "Параметры" (значок шестеренки) → "Приложения".</li>
+                            <li>В списке найдите ненужную программу.</li>
+                            <li>Нажмите на неё и выберите "Удалить".</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="device-instruction">
+                    <h3> Компьютер (Mac / Мак)</h3>
+                    
+                    <div class="instruction-block">
+                        <h4>Как скачать:</h4>
+                        <ol>
+                            <li>Найдите и откройте App Store в Dock (панель внизу).</li>
+                            <li>В поле поиска в правом верхнем углу введите название приложения.</li>
+                            <li>Нажмите кнопку "Загрузить" (белая с облачком) или "Получить".</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="instruction-block">
+                        <h4>Как удалить:</h4>
+                        <ol>
+                            <li>Откройте папку "Программы" (через Finder в боковом меню).</li>
+                            <li>Найдите ненужное приложение.</li>
+                            <li>Перетащите его значок в корзину в Dock или нажмите на него правой кнопкой мыши и выберите "Переместить в корзину".</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="info-block important-block">
+                    <h3> Главные правила безопасности при установке</h3>
+                    
+                    <ol class="safety-rules">
+                        <li>
+                            <strong>Только официальные магазины:</strong> 
+                            На телефонах качайте приложения только из App Store или Play Маркет. На компьютере — только с официальных сайтов разработчиков.
+                        </li>
+                        <li>
+                            <strong>Читайте отзывы и рейтинг:</strong> 
+                            Перед скачиванием посмотрите, сколько звезд у приложения и что пишут другие люди.
+                        </li>
+                        <li>
+                            <strong>Не нажимайте на подозрительные ссылки</strong> в рекламе и письмах, обещающие бесплатные подарки. Это ловушка.
+                        </li>
+                        <li>
+                            <strong>Если сомневаетесь — спросите у близких.</strong> 
+                            Лучше перепроверить.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="conclusion-block">
+                <h2>Важно помнить</h2>
+                <p class="conclusion-text">
+                    Безопасность начинается с бдительности и знаний. Сохраните эти инструкции, поделитесь ими с близкими и регулярно освежайте их в памяти. Вместе мы сможем противостоять мошенникам!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Нижняя навигация -->
+    <div class="page-navigation-bottom">
+        <a href="#" class="page-nav-btn prev-btn" onclick="showPrevPart(event)">← Предыдущая часть</a>
+        
+        <div class="page-info-bottom">
+            Часть 1 из 3
+        </div>
+        
+        <a href="#" class="page-nav-btn next-btn" onclick="showNextPart(event)">Следующая часть →</a>
+    </div>
+
+    <!-- Тестовый промо-блок (только на последней странице) -->
+    <div class="test-promo-section" id="test-promo" style="display: none;">
+        <div class="test-promo">
+            <h3>Проверьте свои знания!</h3>
+            <p>После изучения материалов пройдите тест, чтобы закрепить знания о мошенничестве и безопасности</p>
+            <a href="{% url 'test_faq' %}" class="test-promo-btn">Пройти тест</a>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    /* Стили для пагинации (как на других страницах) */
+    .page-indicator {
+        background: rgba(206, 229, 214, 0.3);
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .page-info {
+        text-align: center;
+        font-size: 2rem;
+        color: rgb(48, 123, 142);
+        font-weight: bold;
+    }
+    
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .page-nav-btn {
+        padding: 0.8rem 1.5rem;
+        background-color: rgb(48, 123, 142);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        font-size: 1.6rem;
+        white-space: nowrap;
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+    }
+    
+    .page-nav-btn:hover {
+        background-color: rgb(16,58,87);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .page-numbers {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .page-number {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgb(206, 229, 214);
+        color: rgb(54, 107, 43);
+        text-decoration: none;
+        font-size: 1.6rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .page-number.active {
+        background-color: rgb(54, 107, 43);
+        color: white;
+    }
+    
+    .page-number:hover:not(.active) {
+        background-color: rgb(169, 211, 197);
+        transform: scale(1.1);
+    }
+    
+    .page-navigation-bottom {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 2px solid rgb(206, 229, 214);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .page-info-bottom {
+        font-size: 1.8rem;
+        color: rgb(48, 123, 142);
+        font-weight: bold;
+    }
+    
+    /* Дополнительные стили для этой страницы */
+    .question-item {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        border-left: 5px solid rgb(169, 211, 197);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .question-item h3 {
+        color: rgb(48, 123, 142);
+        margin-bottom: 1.5rem;
+        font-size: 2.8rem;
+        line-height: 1.3;
+    }
+    
+    .solution-list, .steps-list, .emergency-steps, .safety-rules {
+        padding-left: 2rem;
+        margin: 1.5rem 0;
+    }
+    
+    .solution-list li, .steps-list li, .emergency-steps li, .safety-rules li {
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        line-height: 1.5;
+    }
+    
+    .facts-list, .advice-list, .forbidden-list, .prevention-list, .contacts-list {
+        padding-left: 2rem;
+        margin: 1.5rem 0;
+    }
+    
+    .facts-list li, .advice-list li, .forbidden-list li, 
+    .prevention-list li, .contacts-list li {
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        line-height: 1.5;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    .facts-list li:before, .advice-list li:before {
+        content: "•";
+        color: rgb(48, 123, 142);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+    
+    .warning-text {
+        background: rgba(255, 87, 87, 0.1);
+        padding: 1.2rem;
+        border-radius: 10px;
+        border-left: 4px solid #ff5757;
+        margin: 1.5rem 0;
+        color: #d32f2f;
+        font-weight: bold;
+        font-size: 2.4rem;
+    }
+    
+    .important-note {
+        background: rgba(76, 175, 80, 0.1);
+        padding: 1.2rem;
+        border-radius: 10px;
+        border-left: 4px solid #4CAF50;
+        margin: 1.5rem 0;
+        color: #2e7d32;
+        font-weight: bold;
+        font-size: 2.4rem;
+    }
+    
+    .golden-rule {
+        background: rgba(255, 193, 7, 0.1);
+        padding: 1.2rem;
+        border-radius: 10px;
+        border-left: 4px solid #ffc107;
+        margin: 1.5rem 0;
+        color: #ff9800;
+        font-size: 2.4rem;
+    }
+    
+    .device-instruction {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: rgba(206, 229, 214, 0.2);
+        border-radius: 15px;
+        border: 2px solid rgb(169, 211, 197);
+    }
+    
+    .device-instruction h3 {
+        color: rgb(54, 107, 43);
+        margin-bottom: 1.5rem;
+        font-size: 2.8rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .instruction-block {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 10px;
+    }
+    
+    .instruction-block h4 {
+        color: rgb(48, 123, 142);
+        margin-bottom: 1rem;
+        font-size: 2.4rem;
+    }
+    
+    .instruction-block ol {
+        padding-left: 2rem;
+    }
+    
+    .instruction-block li {
+        margin-bottom: 1rem;
+        font-size: 2.2rem;
+        line-height: 1.5;
+    }
+    
+    .important-block {
+        background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+        border: 2px solid #ffc107;
+    }
+    
+    .conclusion-block {
+        padding: 3.5rem;
+        background: linear-gradient(135deg, rgb(206, 229, 214), rgb(169, 211, 197));
+        border-radius: 25px;
+        text-align: center;
+        margin-top: 4rem;
+    }
+
+    .conclusion-block h2 {
+        color: rgb(54, 107, 43);
+        margin-bottom: 2rem;
+        font-size: 4.5rem;
+        line-height: 1.2;
+    }
+
+    .conclusion-text {
+        font-size: 3.5rem;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+    
+    /* Адаптация для мобильных */
+    @media (max-width: 768px) {
+        .page-navigation {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .page-nav-btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 1.4rem;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .page-numbers {
+            order: -1;
+        }
+        
+        .page-navigation-bottom {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .page-info, .page-info-bottom {
+            font-size: 1.6rem;
+        }
+        
+        .question-item {
+            padding: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .question-item h3 {
+            font-size: 1.8rem;
+        }
+        
+        .device-instruction {
+            padding: 1.2rem;
+        }
+        
+        .device-instruction h3 {
+            font-size: 1.8rem;
+        }
+        
+        .instruction-block h4 {
+            font-size: 1.6rem;
+        }
+        
+        .warning-text, .important-note, .golden-rule {
+            font-size: 1.4rem;
+            padding: 1rem;
+        }
+        
+        .solution-list li, .steps-list li, .emergency-steps li, 
+        .safety-rules li, .facts-list li, .advice-list li,
+        .forbidden-list li, .prevention-list li, .contacts-list li {
+            font-size: 1.4rem;
+        }
+        
+        .instruction-block li {
+            font-size: 1.4rem;
+        }
+        
+        .conclusion-block {
+            padding: 1.5rem;
+        }
+        
+        .conclusion-block h2 {
+            font-size: 1.8rem;
+        }
+        
+        .conclusion-text {
+            font-size: 1.4rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .page-nav-btn {
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .page-number {
+            width: 35px;
+            height: 35px;
+            font-size: 1.4rem;
+        }
+        
+        .question-item h3 {
+            font-size: 1.6rem;
+        }
+    }
+</style>
+
+<script>
+    let currentPart = 1;
+    const totalParts = 3;
+    
+    function showPart(partNum, event = null) {
+        if (event) event.preventDefault();
+        
+        // Скрываем все части
+        document.querySelectorAll('.part').forEach(part => {
+            part.style.display = 'none';
+        });
+        
+        // Показываем выбранную часть
+        document.querySelector(`.part[data-part="${partNum}"]`).style.display = 'block';
+        
+        // Обновляем текущую часть
+        currentPart = partNum;
+        
+        // Обновляем навигацию
+        updateNavigation();
+    }
+    
+    function showPrevPart(event) {
+        event.preventDefault();
+        if (currentPart > 1) {
+            showPart(currentPart - 1);
+        }
+    }
+    
+    function showNextPart(event) {
+        event.preventDefault();
+        if (currentPart < totalParts) {
+            showPart(currentPart + 1);
+        }
+    }
+    
+    function updateNavigation() {
+        // Обновляем информацию о странице
+        document.querySelector('.page-info').textContent = `Часть ${currentPart} из ${totalParts}`;
+        document.querySelector('.page-info-bottom').textContent = `Часть ${currentPart} из ${totalParts}`;
+        
+        // Обновляем кнопки навигации
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        if (prevBtn) prevBtn.style.display = currentPart > 1 ? 'block' : 'none';
+        if (nextBtn) nextBtn.style.display = currentPart < totalParts ? 'block' : 'none';
+        
+        // Обновляем активный номер страницы
+        document.querySelectorAll('.page-number').forEach((num, index) => {
+            if (index + 1 === currentPart) {
+                num.classList.add('active');
+                num.removeAttribute('href');
+                num.onclick = null;
+            } else {
+                num.classList.remove('active');
+                num.setAttribute('href', '#');
+                num.onclick = (e) => showPart(index + 1, e);
+            }
+        });
+        
+        // Показываем/скрываем тестовый промо-блок
+        const testPromo = document.getElementById('test-promo');
+        if (testPromo) {
+            testPromo.style.display = currentPart === totalParts ? 'block' : 'none';
+        }
+        
+        // Прокрутка к верху страницы
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', function() {
+        showPart(1);
+    });
+</script>
+{% endblock %}
